@@ -10,25 +10,25 @@ namespace QCUtilities.Entities
     [Serializable]
     public class Post
     {
-        [XmlElement(nameof(Author))]
+        [XmlElement("author")]
         public string Author { get; set; }
 
-        [XmlElement(nameof(Date))]
+        [XmlElement("date")]
         public DateTime Date { get; set; }
 
-        [XmlElement(nameof(Link))]
+        [XmlElement("link")]
         public string Link { get; set; }
 
-        [XmlElement(nameof(Title))]
+        [XmlElement("title")]
         public string Title { get; set; }
 
-        [XmlElement(nameof(Body))]
+        [XmlElement("body")]
         public string Body { get; set; }
 
         public override bool Equals(object obj)
         {
             var item = obj as Post;
-            var result=
+            var result =
             Author.Equals(item.Author)
                 &&
                 Date.Equals(item.Date)
@@ -49,11 +49,11 @@ namespace QCUtilities.Entities
     }
 
     [Serializable]
-    [XmlRoot("Posts")]
+    [XmlRoot("posts")]
 
     public class PostCollection
     {
-        [XmlElement(nameof(Post))]
+        [XmlElement("post")]
         public Post[] Posts { get; set; }
 
         public List<Post> ToList()
