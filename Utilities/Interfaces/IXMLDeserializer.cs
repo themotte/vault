@@ -7,7 +7,7 @@ namespace QCUtilities.Interfaces
 {
     public interface IXMLDeserializer
     {
-        public List<Post> DeserializeXML(string fileName);
+        public List<Post> DeserializeXML(string fileName,string xsd);
 
     }
 }

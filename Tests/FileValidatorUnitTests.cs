@@ -13,7 +13,6 @@ namespace QCVault.Tests
     public class FileValidatorUnitTests
     {
         [TestCase(@"C:\Users\User\invalidfileName")]
-        
         public void IsValidFileName_InvalidName_ReturnsFalse(string fileName)
         {
             var fileVal = new FileValidator();
@@ -22,7 +21,6 @@ namespace QCVault.Tests
         }
 
         [TestCase(@"C:\Users\User\validFileName.xml")]
-
         public void IsValidFileName_ValidName_ReturnsTrue(string fileName)
         {
             var fileVal = new FileValidator();
@@ -31,11 +29,9 @@ namespace QCVault.Tests
         }
     }
 
-
     [TestFixture]
     public class FileValidatorIntegrationTests
     {
-
 
         [SetUp]
         public void Setup()
@@ -83,7 +79,6 @@ namespace QCVault.Tests
                 ;
             }
         }
-
 
         private void CreateEmptyTXTFile()
         {

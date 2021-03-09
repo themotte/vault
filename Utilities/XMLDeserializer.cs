@@ -11,7 +11,7 @@ using QCUtilities.Interfaces;
 
 namespace QCUtilities
 {
-    public class XMLDeserializer
+    public class XMLDeserializer : IXMLDeserializer
     {
         private readonly IXMLFileValidator fileValidator;
 
@@ -19,10 +19,9 @@ namespace QCUtilities
         {
             fileValidator = fMan;
         }
-
-        public List<Post> DeserializeXML(string fileName)
+        public List<Post> DeserializeXML(string fileName, string xsd)
         {
-            ValidateXML(fileName);
+            ValidateXML(fileName, xsd);
 
             var ser = new XmlSerializer(typeof(PostCollection));
             var ps = new PostCollection();
@@ -31,13 +30,10 @@ namespace QCUtilities
                 ps = (PostCollection)ser.Deserialize(reader);
             }
 
-            return ps.ToList();
+            return ps.Posts;
 
         }
-
-       
-
-        private void ValidateXML(string fileName)
+        private void ValidateXML(string fileName, string xsd)
         {
             if (!fileValidator.IsValidFileName(fileName))
             {
@@ -51,8 +47,11 @@ namespace QCUtilities
             {
                 throw new InvalidDataException($"File is not a valid xml!");
             }
+            if (!fileValidator.IsXMLSchemaCompliant(fileName, xsd))
+            {
+                throw new XmlException($"File is not schema compliant!");
+            }
         }
-        
     }
 
     public class FileValidator : IXMLFileValidator
@@ -75,7 +74,6 @@ namespace QCUtilities
             }
             return true;
         }
-
         public bool IsValidFileName(string fileName)
         {
             try
@@ -88,27 +86,28 @@ namespace QCUtilities
                 return false;
             }
         }
-
-        public bool IsXMLSchemaCompliant(string fileName,string xsd)
+        public bool IsXMLSchemaCompliant(string fileName, string xsd)
         {
-            
+
             var schema = new XmlSchemaSet();
             schema.Add("", xsd);
             var result = false;
             string msg = "";
+            var msgType = (XmlSeverityType)1;
             using (var rd = XmlReader.Create(fileName))
             {
                 var doc = XDocument.Load(rd);
-                
-                doc.Validate(schema, (o, e) =>
-                {
-                    
-                    msg = e.Message;
-                }
-                    )
-                    ;
+
+                doc.Validate(
+                    schema, (o, e) =>
+                    {
+
+                        msg = e.Message;
+                        msgType = e.Severity;
+                    }
+                );
             }
-            result = string.IsNullOrEmpty(msg);
+            result = string.IsNullOrEmpty(msg) || msgType == XmlSeverityType.Warning;
             return result;
         }
     }

@@ -1,20 +1,20 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-	<xs:element name="Posts">
-		<xs:complexType>
-			<xs:sequence>
-				<xs:element maxOccurs="unbounded" name="Post">
-					<xs:complexType>
-						<xs:sequence>
-							<xs:element name="Author" type="xs:string" />
-							<xs:element name="Date" type="xs:dateTime" />
-							<xs:element name="Link" type="xs:string" />
-							<xs:element name="Title" type="xs:string" />
-							<xs:element name="Body" type="xs:string" />
-						</xs:sequence>
-					</xs:complexType>
-				</xs:element>
-			</xs:sequence>
-		</xs:complexType>
-	</xs:element>
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified">
+    <xsd:element name="posts">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element maxOccurs="unbounded" name="post">
+                    <xsd:complexType>
+                        <xsd:sequence>
+                            <xsd:element name="author" type="xsd:string" />
+                            <xsd:element name="date" type="xsd:dateTime" />
+                            <xsd:element name="link" type="xsd:string" />
+                            <xsd:element name="title" type="xsd:string" />
+                            <xsd:element name="body" type="xsd:string" />
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
 </xs:schema>

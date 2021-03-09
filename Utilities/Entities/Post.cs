@@ -29,16 +29,11 @@ namespace QCUtilities.Entities
         {
             var item = obj as Post;
             var result =
-            Author.Equals(item.Author)
-                &&
-                Date.Equals(item.Date)
-                &&
-                Link.Equals(item.Link)
-                &&
-                Title.Equals(item.Title)
-                &&
-                Body.Equals(item.Body)
-                ;
+                Author.Equals(item.Author) &&
+                Date.Equals(item.Date) &&
+                Link.Equals(item.Link) &&
+                Title.Equals(item.Title) &&
+                Body.Equals(item.Body);
             return result;
         }
 
@@ -50,15 +45,16 @@ namespace QCUtilities.Entities
 
     [Serializable]
     [XmlRoot("posts")]
-
     public class PostCollection
     {
-        [XmlElement("post")]
-        public Post[] Posts { get; set; }
+        
 
-        public List<Post> ToList()
+        public PostCollection()
         {
-            return Posts.ToList();
+            Posts = new List<Post>();
         }
+
+        [XmlElement("post")]
+        public List<Post> Posts { get; set; }
     }
 }
