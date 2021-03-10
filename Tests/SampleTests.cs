@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using NUnit.Framework;
 using NSubstitute;
 
-namespace QCVault.UnitTests
+namespace QCVault.Tests
 {
     [TestFixture]
     public class SampleTests
@@ -53,10 +53,10 @@ namespace QCVault.UnitTests
             private readonly ISampleMockInterface toMock;
             private readonly ISampleStubInterface toStub;
 
-            public DummyObjectToTest(ISampleMockInterface _mock,ISampleStubInterface _stub)
+            public DummyObjectToTest(ISampleMockInterface mock,ISampleStubInterface stub)
             {
-                toMock = _mock;
-                toStub = _stub;
+                toMock = mock;
+                toStub = stub;
             }
 
             public void DoSomethingWithDependency()

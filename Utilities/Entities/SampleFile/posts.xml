@@ -1,0 +1,111 @@
+<posts>
+  <post>
+    <author>Cheezemansam</author>
+    <date>2020-06-29T05:17:08+00:00</date>
+    <link>"https://www.reddit.com/r/TheMotte/comments/hhtwxi/culture_war_roundup_for_the_week_of_june_29_2020/fwe75qg/?context=3&amp;sort=best</link>
+    <title>The Role of Precedent in the Supreme Court</title>
+    <body>Note: *Stare Decisis* is the legal principle of determining points in litigation according to precedent. This is a controversial topic because there is disagreement about *precisely* how to apply precedent, as well as how much deference the court out to give to "bad" precedents.
+
+&gt; SCOTUS has struck down a Louisiana regulation requiring abortion providers to have admitting privileges at a nearby hospital. The outcome is emblamatic of what some conservatives see as the judicial equivalent of Lucy pulling away the football.
+
+&gt;The outcome is emblamatic of what some conservatives see as the judicial equivalent of Lucy pulling away the football.
+
+I don't really like this level of CW framing. The Supreme Court is probably the only institution that is bound by law to give very explicit and specific arguments for the decisions they make, so at the very least *criticism* should center around these arguments, rather than the meta-level commentary of "Judge X betrayed their team because he reached a different conclusion". At least, that is the discussion we see literally everywhere else.
+
+I think it would be better to frame it more in terms of the substantive disagreement. As mentioned, the dissent does focus on feeling that it is a bad law, and historically Justice Thomas is perfectly eager to overturn bad precedent. Thomas doesn’t really care about precedent at all. The rationale being that a wrong decision that is allowed to stand is still a wrong decision and may be incompatible with the way he sees the legal system as functioning harmoniously. On the other side, Roberts, Breyer, and Kagan all give much more weight to stare decisis because of a number of reasons, including a desire to have predictability in the law and, for Roberts especially, making sure the court is seen as apolitical.
+
+In terms of "Keep or overrule objectionable [bad?] precedent?"
+
+**Factors in favor of keeping old precedents intact:**
+
+1. Statutory precedents generally stay put, even if wrongly decided, based on the relative ease by which Congress can fix a bad SCOTUS decision, especially if Congress has amended the statute at issue and not addressed the purported bad SCOTUS decision. See Kimble v. Marvel Entertainment (2015).
+2. Reliance interests make justices reluctant to overturn cases. Practically and pragmatically speaking, when private individuals or businesses enter into long term business relationships, or buy and sell property, or make lasting life decisions based on settled law, SCOTUS is very reluctant to revisit those foundations. Planned Parenthood v. Casey goes into an extensive discussion about how difficult it is to measure reliance interests, in how people have "organized intimate relationships and made choices that define their views of themselves and their places in society, in reliance on the availability of abortion in the event that contraception should fail," and recognizing that the difficulty of quantifying that reliance doesn't mean that it isn't significant. Even public/governmental entities that have enacted procedures based on SCOTUS rulings are entitled to some stability. That's why SCOTUS didn't overturn Miranda in Dickerson v. U.S. (2000), despite using some language that really called into question the validity of the reasoning in Miranda. After all, pretty much every police department has Miranda warnings ingrained in their procedures, so that overturning Miranda would probably be pretty disruptive.
+
+**Factors that favor overturning old precedent:**
+
+1. Impracticability or unworkability. Nearly a century of judicial experience with the forum shopping gamesmanship under Swift v. Tyson, persuaded SCOTUS to overturn Swift with Erie, 9-0. Similarly, SCOTUS continually tweaking the "categorical approach" with the Armed Career Criminal Act's "residual clause," with Courts of Appeals struggling to actually follow SCOTUS's broad and general guidance, eventually led SCOTUS to rule that the residual clause was unconstitutionally vague, and therefore void, in Johnson v. United States (2015).
+2. A history of warnings showing the problems with the original analysis, and maturing case law circling around the case to be overturned. Johnson and the ACCA falls within this category, where a few cases before Johnson called the whole structure into question, inviting lower courts and litigants to really explore the limits of the arguments against the constitutionality. Brown v. Board didn't come out of nowhere, because there were decades upon decades of SCOTUS cases affirming the general principle of Plessy's "separate but equal," but in each case deciding that the particular segregation scheme before the court was not actually "equal." Those cases laid the foundation for the ultimate conclusion that "separate" was inherently not "equal," and that "separate but equal" was a contradiction in terms.
+3. Factual foundations or predictions in judicial opinions that have since been disproven. Lochner seemed to be premised on the idea that unrestricted freedom to contract would provide for the the bare minimum of human needs without government intervention, but the Great Depression showed that larger economic forces could overtake individual contracts in such a way that justices were uncomfortable with the implications that would flow from that earlier decision, and was ultimately overturned. Brown also showed the long term untenability of the "separate but equal" fiction, in light of actual facts that strongly suggested that black citizens were denied the same opportunities as white citizens.
+
+There are arguments on both sides for whether these factors weigh in favor of overturning Roe, so it's not super predictive on deciding whether a particular justice will actually rule to apply the rule of a case that they dissented from, but it looks like Roberts did exactly that today.
+
+Also, there are other very substantial points of disagreement provided by the dissent, one is that several central facts are different from the precedent [Page 90]:
+
+&gt;Stare decisis is a major theme in the plurality opinion and
+that of THE CHIEF JUSTICE. Both opinions try to create the
+impression that this case is the same as Whole Woman’s
+Health and that stare decisis therefore commands the same
+result. In truth, however, the two cases are very different.
+While it is certainly true that the Texas and Louisiana statutes are largely the same, the two cases are not. The decision in Whole Woman’s Health was not based on the face of
+the Texas statute, but on an empirical question, namely,
+the effect of the statute on access to abortion in that State.
+579 U. S., at ___ (slip op., at 24). The Court’s answer to that
+question depended on numerous factors that may differ
+from State to State, including the demand for abortions, the 
+number and location of abortion clinics and physicians, the
+geography of the State, the distribution of the population,
+and the ability of physicians to obtain admitting privileges.
+Id., at ___–___ (slip op., at 24–26). There is no reason to
+think that a law requiring admitting privileges will necessarily have the same effect in every state. As a result, just
+because the Texas admitting privileges requirement was
+found by this Court, based on evidence in the record of that
+case, to have substantially reduced access to abortion in
+that State, it does not follow that Act 620 would have comparable effects in Louisiana. See id., at ___–___ (slip op., at
+22–26) (reviewing Texas record). The two States are neighbors, but they are not the same. Accordingly, the recordbased empirical determination in Whole Woman’s Health is
+not controlling here.
+
+&gt;The suggestion that Whole Woman’s Health is materially
+identical to this case is ironic, since the two cases differ in
+a way that was critical to the Court’s reasoning in Whole
+Woman’s Health, i.e., the difference between a pre-enforcement
+facial challenge and a post-enforcement challenge based on
+evidence of the law’s effects. See id., at ___ (slip op., at 11).
+Before the Texas law went into effect, abortion providers
+mounted an unsuccessful facial challenge, arguing that the
+law would drastically limit abortion access. The Fifth Circuit held that the plaintiffs had not shown that the law
+would create a substantial obstacle for women seeking
+abortions, and a final judgment was entered against them.
+Planned Parenthood of Greater Tex. Surgical Health Servs.
+v. Abbott, 748 F. 3d 583, 590, 605 (2014). Then, after the
+law had been in operation for some time, many of the same
+plaintiffs filed a second suit and again argued that the admitting privileges requirement violated Casey. Whole
+Woman’s Health v. Cole, 790 F. 3d 563, 577, and n. 14 (CA5
+2015). The State defendants sought dismissal based on the
+doctrine of claim preclusion, but the Whole Woman’s Health
+majority rejected that argument
+
+And also that, again unlike the Texas law, there is not actually evidence in support of the "harms women" (very roughly put) theory [Page 92]:
+
+&gt;Aside from suggesting that Whole Woman’s Health is dispositive, the plurality and THE CHIEF JUSTICE provide one
+other reason for concluding that Act 620, if allowed to go
+into effect, would create a substantial obstacle for women
+seeking abortions. Pointing to the District Court’s finding
+that the Louisiana law would have a drastic effect on abortion access, June Medical Services, LLC v. Kliebert, 250
+F. Supp. 3d 27, 87 (MD La. 2017), the plurality and THE
+CHIEF JUSTICE note that findings of fact may be overturned
+only if clearly erroneous, and they see no such error here.
+Ante, at 17 (opinion of BREYER, J.); ante, at 15–16 (opinion
+of ROBERTS, C. J.). In taking this approach, they overlook
+the flawed legal standard on which the District Court’s finding depends, and they ignore the gross deficiencies of the
+evidence in the record.</body>
+  </post>
+  <post>
+    <author>questionnmark</author>
+    <date>2020-06-29T23:32:56+00:00</date>
+    <link>https://www.reddit.com/r/TheMotte/comments/hhtwxi/culture_war_roundup_for_the_week_of_june_29_2020/fwf5vss/?context=3&amp;sort=best</link>
+    <title>The Role of Energy and Entropy in Cultural Conflict</title>
+    <body>Lets move away from the topical discussions or incidents of the week, and how about we talk about something a little different -- entropy and energy as it relates to economic growth and cultural conflict. 
+
+The growth and complexity of human systems are the result of fossil fuel energy being input into the system. One barrel of oil has the [equivalent energy of several years](http://theoildrum.com/node/4315) of human labour, but the specific number doesn't matter, just that it is a lot and it is critically important to human society -- especially cities which need the highest concentration of energy to maintain their relatively higher complexity. It is without a shadow of a doubt, your very life depends on this net energy to be sustained because without it there would be no human civilization as we know it. No amount of slaves or peasant farmers can compete with a farmer on a tractor because of how much more cheap and useful a tractor is by comparison. If you doubt me then you should 'walk a mile in your car's shoes'; I.E. fill your car up with gas, drive a mile away from the gas station then fill it up again. 
+
+*I am not arguing for neo-liberalism*, but I wanted to give some cultural and economic context. There are very real limits to the growth and deployment of fossil fuels as the pollution from their use and the industries that rely upon them reached a critical state in the West around the 1970's.  Neo-liberalism is a response to the problems of the 70's, and it has done a relatively good job of maintaining stability despite the challenges faced by the economy. neo-liberalism as a concept helped move Western society beyond the hump of the 70's and kept things ticking along for 50 years, so it's not all bad even if there are some relative winners and losers due to the changes. 
+
+In a zero sum system like what existed for most of human history if Bob the farmer wanted more production he had more kids to work on the field or he went and enslaved Bill and his kids to do the work on the farm whilst his kids got to enjoy relative prosperity -- a zero sum situation whereby if somebody gained then someone else had to lose. The deployment of fossil fuels created the concept of economic growth, and we are several dozen doublings down that path already, but most importantly it created a non-zero sum environment where Bob and Bill can both prosper if instead of putting Bill to work, Bob put some coal to good use instead. Our Western institutions have evolved within this 'non-zero sum' environment. 
+
+As economic growth and increasing energy supply become more difficult we are entering back into a zero-sum economic system. Bob is now Bob the accountant, and if he wants to drive a new Audi and go on more overseas holidays whilst living in a nicer home then Bill the factory worker has to get less. A significant proportion of the current inequity noted in the West is due, in my opinion, to this shift. **It is within this zero-sum context that identity politics becomes relevant**, and the culture war as we keep discussing is a symptom of this change. When group A benefits it is almost certainly at the expense of group B, C, D etc. Young vs old; left vs right; ethnic groups and other identities vs each other etc. 
+
+At this point we are only partially entering the zero-sum state because as many of you would rightfully point out technology, trade, specialization and outside resources all have incredible potential to shift the balance (yay for neo-liberalism??). I'm not trying to be a doomer as I am actually pretty optimistic that these problems can be solved. Where I am not sure is whether there is the political and cultural will as well as the intelligence and grit within politics to actually make a positive difference. A transition from fossil fuels to renewable energy at current or similar technology levels would create a jarring transition to a global zero sum system. The relative prosperity of all groups of Americans (white, black, Asian -- everyone) for instance would have to decline. Based on my experience as a previous environmental activist there are no hard lines drawn between a black person in America and a black person in Africa, so if the former has to lose so for the greater good for instance of all people then the latter's needs will take precedence -- the only consolation of course is that the white or Asian group of Americans would lose *relatively more*. 
+
+We can argue all we want about any number of culture war topics, but as it stands I believe that they are frequently symptoms of a much large and more systemic trouble. As underlying tensions increase as the systems we have put in place during an unprecedented period of stability and growth in the Western world become increasingly difficult to maintain then this tension comes to the surface as inter-group conflict.</body>
+  </post>
+</posts>
