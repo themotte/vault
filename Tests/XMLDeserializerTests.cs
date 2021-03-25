@@ -11,7 +11,7 @@ namespace QCVault.Tests
 {
     public static class DeserializerFactory
     {
-        public static XMLDeserializer Create(
+        public static PostDeserializer Create(
                 bool validFileName = true,
                 bool fileExists = true,
                 bool validXMLFile = true,
@@ -25,7 +25,7 @@ namespace QCVault.Tests
             fakeFileValidator.IsFileValidXML(Arg.Any<string>()).Returns(validXMLFile);
             fakeFileValidator.IsXMLSchemaCompliant(Arg.Any<string>(), Arg.Any<string>()).Returns(isXMLSchemaCompliant);
 
-            return new XMLDeserializer(fakeFileValidator);
+            return new PostDeserializer(fakeFileValidator);
 
         }
     }

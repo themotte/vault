@@ -11,16 +11,32 @@ using QCUtilities.Interfaces;
 
 namespace QCUtilities
 {
-    public class XMLDeserializer : IXMLDeserializer
+    public class PostDeserializer : IPostLoader
     {
         private readonly IXMLFileValidator fileValidator;
+        private readonly string defaultFile="";
+        private readonly string defaultXSD="";
 
-        public XMLDeserializer(IXMLFileValidator fMan)
+        public PostDeserializer(IXMLFileValidator fVal)
         {
-            fileValidator = fMan;
+            fileValidator = fVal;
         }
+
+        public PostDeserializer(IXMLFileValidator fVal,string dFile,string dXSD )
+        {
+            fileValidator = fVal;
+            defaultFile = dFile;
+            defaultXSD = dXSD;
+        }
+
+        
+
         public List<Post> DeserializeXML(string fileName, string xsd)
         {
+
+            fileName = !string.IsNullOrEmpty(defaultFile) ? defaultFile : fileName;
+            xsd = !string.IsNullOrEmpty(defaultXSD) ? defaultXSD : xsd;
+
             ValidateXML(fileName, xsd);
 
             var ser = new XmlSerializer(typeof(PostCollection));
