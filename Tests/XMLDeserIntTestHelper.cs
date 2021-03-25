@@ -11,8 +11,8 @@ namespace QCVault.Tests
 {
     public static class XMLDeserIntTestHelper
     {
-        public static readonly string IntDestDir = Path.Combine(AppContext.BaseDirectory, "IntegrationTestFolder");
-        public static readonly string SchemaFolder = Path.Combine(AppContext.BaseDirectory, "Utilities", "Entities");
+        public static readonly string IntDestDir = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "IntegrationTestFolder");
+        public static readonly string SchemaFolder = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Posts");
         public const string INVALIDXML = "invalid.xml";
         public const string EMPTYXML = "empty.xml";
         public const string VALIDXML = "valid.xml";

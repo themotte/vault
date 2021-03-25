@@ -5,7 +5,7 @@ using QCUtilities.Entities;
 
 namespace QCUtilities.Interfaces
 {
-    public interface IXMLDeserializer
+    public interface IPostLoader
     {
         public List<Post> DeserializeXML(string fileName,string xsd);
 
