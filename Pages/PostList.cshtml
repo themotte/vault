@@ -1,0 +1,33 @@
+@page
+@model QCVault.Pages.PostListModel
+@{
+}
+
+
+@foreach (var post in Model.Posts)
+{
+
+<div class="card card-body bg-light">
+    <div class="media">
+        <a class="align-self-center mr-3" asp-page="Post" asp-route-title="@post.Title">
+            <img src="http://placekitten.com/150/150">
+        </a>
+        <div class="media-body">
+            <h4 class="media-heading">@post.Title</h4>
+            <p class="text-right"><em>By @post.Author</em></p>
+            <p>
+                
+                    @{
+                        int postLength = post.Body.Length;
+                        int lenToCut = postLength < 1000 ? postLength : 1000;
+
+                        @(String.Concat(post.Body.Substring(0, lenToCut), "..."));
+                    }
+            </p>
+            <p>
+                <b>Posted on @post.Date.ToString("dd-MM-yy HH:mm:ss")</b>
+            </p>
+        </div>
+    </div>
+</div>
+}

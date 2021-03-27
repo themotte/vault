@@ -57,7 +57,7 @@ namespace QCUtilities
             }
             if (!fileValidator.FileExists(fileName))
             {
-                throw new FileNotFoundException($"Invalid fileName. Make sure it is an .xml file");
+                throw new FileNotFoundException($"File not found. Make sure the path is correct");
             }
             if (!fileValidator.IsFileValidXML(fileName))
             {

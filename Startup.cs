@@ -4,8 +4,12 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using QCUtilities;
+using QCUtilities.Entities;
+using QCUtilities.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -23,7 +27,17 @@ namespace QCVault
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddRazorPages();
+            services.AddRazorPages().AddRazorPagesOptions(options =>
+            {
+                options.Conventions.AddPageRoute("/PostList", "");
+            });
+
+
+            string xmlPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Posts","posts.xml");
+            string xsd = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Posts", "posts.xsd");
+
+
+            services.AddScoped<IPostLoader, PostDeserializer>(provider=> new PostDeserializer(new FileValidator() , xmlPath, xsd));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
