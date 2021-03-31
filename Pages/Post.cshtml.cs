@@ -27,6 +27,7 @@ namespace QCVault.Pages
 
         public async Task<PageResult> OnGetAsync(string title)
         {
+            title = title.Replace('_',' ');
             var result = await Task.FromResult(_postLoader.DeserializeXML("", ""));
             post = result.Where(x => x.Title.Equals(title)).FirstOrDefault();
             return Page();
