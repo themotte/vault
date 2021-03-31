@@ -69,3 +69,83 @@ body {
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
 }
+
+/* PostList layout
+-------------------------------------------------- */
+
+.post-list {
+  max-width: 800px;
+  margin: auto;
+  color: #333;
+}
+
+.post-list a:link, .post-list a:visited {
+  color: #333;
+}
+
+.post-list a:hover {
+  color: #338;
+}
+
+.post-list-element {
+  display: grid;
+  grid-template-columns: 160px auto auto;
+  grid-template-rows: auto;
+  grid-template-areas:
+    "thumbnail title metadata"
+    "thumbnail tags metadata";
+
+  margin: 70px 0px 70px 0px;
+  grid-row-gap: 5px;
+  grid-column-gap: 20px;
+}
+
+.post-list-element .thumbnail {
+  grid-area: thumbnail;
+}
+
+.post-list-element .thumbnail img {
+  max-height: 100%;
+  max-width: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.post-list-element .title {
+  grid-area: title;
+  font-size: 1.6rem;
+  font-weight: 500;
+}
+
+.post-list-element .metadata {
+  grid-area: metadata;
+  text-align: right;
+  font-weight: 300;
+}
+
+.post-list-element .metadata .author {
+  font-size: 1.2rem;
+}
+
+.post-list-element .metadata .date {
+  font-size: 1.0rem;
+  color: #aaa;
+}
+
+.post-list-element .tags {
+  grid-area: tags;
+}
+
+.post-list-element .tag {
+  background-color: #400;
+  color: #eee;
+
+  display: inline-block;
+  margin: 4px 2px;
+  padding: 3px 10px;
+  min-width: 60px;
+
+  border-radius: 40px;
+
+  font-size: 0.8rem;
+  text-align: center;
+}
