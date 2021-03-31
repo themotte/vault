@@ -10,12 +10,12 @@
     {
     <div class="post-list-element">
         <div class="thumbnail">
-            <a asp-page="Post" asp-route-title="@post.Title">
+            <a asp-page="Post" asp-route-title="@post.Title.Replace(' ','_')">
                 @* This is just a temporary image placeholder until we have images *@
                 <img src=@($"https://picsum.photos/seed/{System.Text.RegularExpressions.Regex.Replace(post.Title, @"[^\w]*", String.Empty)}/160/100")>
             </a>
         </div>
-        <div class="title"><h2><a asp-page="Post" asp-route-title="@post.Title">@post.Title</a></h2></div>
+        <div class="title"><h2><a asp-page="Post" asp-route-title="@post.Title.Replace(' ','_')">@post.Title</a></h2></div>
         <div class="metadata">
             <div class="author">@post.Author</div>
             <div class="date">@post.Date.ToString("yyyy MMM d")</div>
