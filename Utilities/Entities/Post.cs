@@ -25,6 +25,15 @@ namespace QCUtilities.Entities
         [XmlElement("body")]
         public string Body { get; set; }
 
+        private static System.Text.RegularExpressions.Regex SpecialCharacterStripper = new System.Text.RegularExpressions.Regex(@"[^\w ]*");
+        public string URLSlug
+        {
+            get
+            {
+                return SpecialCharacterStripper.Replace(Title, "").Replace(" ", "_").ToLower();
+            }
+        }
+
         public override bool Equals(object obj)
         {
             var item = obj as Post;
