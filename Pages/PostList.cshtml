@@ -18,6 +18,7 @@
         <div class="title"><h2><a asp-page="Post" asp-route-title="@post.Title.Replace(' ','_')">@post.Title</a></h2></div>
         <div class="metadata">
             <div class="author">@post.Author</div>
+            <div class="divider">-</div>
             <div class="date">@post.Date.ToString("yyyy MMM d")</div>
         </div>
         @* TODO: introduce tags; this will just hang out here for now
