@@ -24,6 +24,20 @@ a {
   border-color: #1861ac;
 }
 
+h1 {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+blockquote {
+    background-color: #f8f8ff;
+    border-left: 4px solid #88b;
+    padding: 1em 1em 1em 1em;
+}
+blockquote p:last-child {
+  margin-bottom: 0;
+}
+
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
