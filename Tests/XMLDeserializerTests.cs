@@ -20,12 +20,16 @@ namespace QCVault.Tests
         {
             var fakeFileValidator = Substitute.For<IXMLFileValidator>();
 
+
+            string fileName = XMLDeserIntTestHelper.ValidXMLPath;
+            string xsd = XMLDeserIntTestHelper.ValidXSDPath;
+
             fakeFileValidator.IsValidFileName(Arg.Any<string>()).Returns(validFileName);
             fakeFileValidator.FileExists(Arg.Any<string>()).Returns(fileExists);
             fakeFileValidator.IsFileValidXML(Arg.Any<string>()).Returns(validXMLFile);
             fakeFileValidator.IsXMLSchemaCompliant(Arg.Any<string>(), Arg.Any<string>()).Returns(isXMLSchemaCompliant);
 
-            return new PostDeserializer(fakeFileValidator);
+            return new PostDeserializer(fakeFileValidator,fileName,xsd);
 
         }
     }
@@ -41,28 +45,28 @@ namespace QCVault.Tests
         {
             var Deserializer = DeserializerFactory.Create(validFileName: false);
 
-            Assert.Throws<ArgumentOutOfRangeException>(() => Deserializer.DeserializeXML("", ""));
+            Assert.Throws<ArgumentOutOfRangeException>(() => Deserializer.DeserializeXML());
         }
 
         [TestCase]
         public void DeserializeXML_FileNotExists_Throws()
         {
             var Deserializer = DeserializerFactory.Create(fileExists: false);
-            Assert.Throws<FileNotFoundException>(() => Deserializer.DeserializeXML("whatever", ""));
+            Assert.Throws<FileNotFoundException>(() => Deserializer.DeserializeXML());
         }
 
         [TestCase]
         public void DeserializeXML_NotAValidXMLFILE_Throws()
         {
             var Deserializer = DeserializerFactory.Create(validXMLFile: false);
-            Assert.Throws<InvalidDataException>(() => Deserializer.DeserializeXML("whatever", ""));
+            Assert.Throws<InvalidDataException>(() => Deserializer.DeserializeXML());
         }
 
         [TestCase]
         public void DeserializeXML_NoSchemaCompliant_Throws()
         {
             var Deserializer = DeserializerFactory.Create(isXMLSchemaCompliant: false);
-            Assert.Throws<XmlException>(() => Deserializer.DeserializeXML("whatever", ""));
+            Assert.Throws<XmlException>(() => Deserializer.DeserializeXML());
         }
 
 
@@ -90,7 +94,7 @@ namespace QCVault.Tests
         {
             var posts = XMLDeserIntTestHelper.CreateTestCollection().Posts;
             var deser = DeserializerFactory.Create();
-            var result = deser.DeserializeXML(XMLDeserIntTestHelper.ValidXMLPath, XMLDeserIntTestHelper.ValidXSDPath);
+            var result = deser.DeserializeXML();
             Assert.That(posts.SequenceEqual(result));
         }
     }

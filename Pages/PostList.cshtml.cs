@@ -26,7 +26,7 @@ namespace QCVault.Pages
 
         public async Task<IActionResult> OnGetAsync(int? pageNumber)
         {
-            var result = await Task.FromResult(_postLoader.DeserializeXML("", ""));
+            var result = await Task.FromResult(_postLoader.DeserializeXML());
             Posts = result;
             return Page();
         }

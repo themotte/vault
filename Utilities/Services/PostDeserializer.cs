@@ -14,39 +14,42 @@ namespace QCUtilities
     public class PostDeserializer : IPostLoader
     {
         private readonly IXMLFileValidator fileValidator;
-        private readonly string defaultFile="";
-        private readonly string defaultXSD="";
+        private readonly string fileName = "";
+        private readonly string xsd = "";
+        private List<Post> cachedPosts = new List<Post>();
 
         public PostDeserializer(IXMLFileValidator fVal)
         {
             fileValidator = fVal;
         }
 
-        public PostDeserializer(IXMLFileValidator fVal,string dFile,string dXSD )
+        public PostDeserializer(IXMLFileValidator fVal, string dFile, string dXSD)
         {
             fileValidator = fVal;
-            defaultFile = dFile;
-            defaultXSD = dXSD;
+            fileName = dFile;
+            xsd = dXSD;
+            DeserializeXML();
         }
 
-        
-
-        public List<Post> DeserializeXML(string fileName, string xsd)
+        public List<Post> DeserializeXML()
         {
 
-            fileName = !string.IsNullOrEmpty(defaultFile) ? defaultFile : fileName;
-            xsd = !string.IsNullOrEmpty(defaultXSD) ? defaultXSD : xsd;
-
-            ValidateXML(fileName, xsd);
-
-            var ser = new XmlSerializer(typeof(PostCollection));
-            var ps = new PostCollection();
-            using (Stream reader = new FileStream(fileName, FileMode.Open))
+            if (cachedPosts.Count <= 0)
             {
-                ps = (PostCollection)ser.Deserialize(reader);
+                ValidateXML(fileName, xsd);
+
+                var ser = new XmlSerializer(typeof(PostCollection));
+                var ps = new PostCollection();
+                using (Stream reader = new FileStream(fileName, FileMode.Open))
+                {
+                    ps = (PostCollection)ser.Deserialize(reader);
+                }
+
+
+                cachedPosts = ps.Posts;
             }
 
-            return ps.Posts;
+            return cachedPosts;
 
         }
         private void ValidateXML(string fileName, string xsd)

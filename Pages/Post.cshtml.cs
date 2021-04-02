@@ -17,7 +17,7 @@ namespace QCVault.Pages
         private readonly ILogger<PageModel> _logger;
         private readonly IPostLoader _postLoader;
 
-        public Post post {get;set;}
+        public Post Post {get;set;}
 
         public PostModel(ILogger<PageModel> logger, IPostLoader postLoader)
         {
@@ -27,8 +27,8 @@ namespace QCVault.Pages
 
         public async Task<PageResult> OnGetAsync(string title)
         {
-            var result = await Task.FromResult(_postLoader.DeserializeXML("", ""));
-            post = result.Where(x => x.URLSlug == title).FirstOrDefault();
+            var result = await Task.FromResult(_postLoader.DeserializeXML());
+            Post = result.Where(x => x.URLSlug == title).FirstOrDefault();
             return Page();
         }
     }
