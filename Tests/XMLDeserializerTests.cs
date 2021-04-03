@@ -29,7 +29,7 @@ namespace QCVault.Tests
             fakeFileValidator.IsFileValidXML(Arg.Any<string>()).Returns(validXMLFile);
             fakeFileValidator.IsXMLSchemaCompliant(Arg.Any<string>(), Arg.Any<string>()).Returns(isXMLSchemaCompliant);
 
-            return new PostDeserializer(fakeFileValidator,fileName,xsd);
+            return new PostDeserializer(fakeFileValidator,fileName,xsd,false);
 
         }
     }

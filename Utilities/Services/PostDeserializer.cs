@@ -23,12 +23,15 @@ namespace QCUtilities
             fileValidator = fVal;
         }
 
-        public PostDeserializer(IXMLFileValidator fVal, string dFile, string dXSD)
+        public PostDeserializer(IXMLFileValidator fVal, string dFile, string dXSD, bool loadCacheOnCreation=true)
         {
             fileValidator = fVal;
             fileName = dFile;
             xsd = dXSD;
-            DeserializeXML();
+            if (loadCacheOnCreation)
+            {
+                DeserializeXML();
+            }
         }
 
         public List<Post> DeserializeXML()

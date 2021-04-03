@@ -37,7 +37,7 @@ namespace QCVault
             string xsd = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Posts", "posts.xsd");
 
 
-            services.AddScoped<IPostLoader, PostDeserializer>(provider=> new PostDeserializer(new FileValidator() , xmlPath, xsd));
+            services.AddSingleton<IPostLoader, PostDeserializer>(provider=> new PostDeserializer(new FileValidator(), xmlPath, xsd));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
