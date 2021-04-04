@@ -103,11 +103,7 @@ body {
 
 .post-list-element {
   display: grid;
-  grid-template-columns: 160px auto auto;
   grid-template-rows: auto;
-  grid-template-areas:
-    "thumbnail title metadata"
-    "thumbnail tags metadata";
 
   margin: 70px 0px 70px 0px;
   grid-row-gap: 5px;
@@ -126,6 +122,9 @@ body {
 
 .post-list-element .title {
   grid-area: title;
+}
+
+.post-list-element .title h2 {
   font-size: 1.6rem;
   font-weight: 500;
 }
@@ -140,8 +139,13 @@ body {
   font-size: 1.2rem;
 }
 
+.post-list-element .metadata .divider {
+  font-size: 1.2rem;
+  color: #aaa;
+}
+
 .post-list-element .metadata .date {
-  font-size: 1.0rem;
+  font-size: 1.2rem;
   color: #aaa;
 }
 
@@ -162,4 +166,68 @@ body {
 
   font-size: 0.8rem;
   text-align: center;
+}
+
+/* smallest size */
+@media (min-width: 0px) {
+  .post-list-element {
+    grid-template-columns: 80px auto;
+    grid-template-areas:
+        "thumbnail title"
+        "thumbnail tags"
+        "metadata metadata";
+  }
+
+  .post-list-element .metadata .author {
+    font-size: 1.2rem;
+    display: inline;
+  }
+
+  .post-list-element .metadata .divider {
+    font-size: 1.2rem;
+    display: inline;
+  }
+
+  .post-list-element .metadata .date {
+    font-size: 1.2rem;
+    display: inline;
+  }
+}
+
+@media (min-width: 500px) {
+  .post-list-element {
+    grid-template-columns: 160px auto;
+    grid-template-areas:
+        "thumbnail title"
+        "thumbnail tags"
+        "metadata metadata";
+  }
+
+  .post-list-element .thumbnail {
+    display: block;
+  }
+}
+
+/* desktop size */
+@media (min-width: 768px) {
+  .post-list-element {
+    grid-template-columns: 160px auto auto;
+    grid-template-areas:
+      "thumbnail title metadata"
+      "thumbnail tags metadata";
+  }
+
+  .post-list-element .metadata .author {
+    font-size: 1.2rem;
+    display: block;
+  }
+
+  .post-list-element .metadata .divider {
+    display: none;
+  }
+
+  .post-list-element .metadata .date {
+    font-size: 1.0rem;
+    display: block;
+  }
 }
