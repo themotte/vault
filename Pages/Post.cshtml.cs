@@ -25,10 +25,9 @@ namespace QCVault.Pages
             _postLoader = postLoader;
         }
 
-        public async Task<PageResult> OnGetAsync(string title)
+        public PageResult OnGet(string title)
         {
-            var result = await Task.FromResult(_postLoader.DeserializeXML("", ""));
-            post = result.Where(x => x.URLSlug == title).FirstOrDefault();
+            post = _postLoader.Posts.Where(x => x.URLSlug == title).FirstOrDefault();
             return Page();
         }
     }

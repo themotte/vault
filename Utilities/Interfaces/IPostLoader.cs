@@ -7,7 +7,6 @@ namespace QCUtilities.Interfaces
 {
     public interface IPostLoader
     {
-        public List<Post> DeserializeXML(string fileName,string xsd);
-
+        public List<Post> Posts { get; }
     }
 }

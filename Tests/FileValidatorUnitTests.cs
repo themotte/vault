@@ -50,10 +50,15 @@ namespace QCVault.Tests
         {
             CreateInvalidXMLFile();
             CreateEmptyXMLFile();
-            var postCollection = XMLDeserIntTestHelper.CreateTestCollection();
-            XMLDeserIntTestHelper.CreateXMLFromCollection(postCollection);
+            CreateValidXMLFile();
             CreateEmptyTXTFile();
             LoadXSDFile();
+        }
+
+        private static void CreateValidXMLFile()
+        {
+            var postCollection = XMLDeserIntTestHelper.CreateTestCollection();
+            XMLDeserIntTestHelper.CreateXMLFromCollection(postCollection);
         }
 
         private void CreateInvalidXMLFile()

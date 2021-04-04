@@ -24,10 +24,9 @@ namespace QCVault.Pages
             _postLoader = postLoader;
         }
 
-        public async Task<IActionResult> OnGetAsync(int? pageNumber)
+        public IActionResult OnGet(int? pageNumber)
         {
-            var result = await Task.FromResult(_postLoader.DeserializeXML("", ""));
-            Posts = result;
+            Posts = _postLoader.Posts;
             return Page();
         }
     }

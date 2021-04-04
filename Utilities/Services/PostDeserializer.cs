@@ -13,31 +13,13 @@ namespace QCUtilities
 {
     public class PostDeserializer : IPostLoader
     {
-        private readonly IXMLFileValidator fileValidator;
-        private readonly string defaultFile="";
-        private readonly string defaultXSD="";
+        private readonly List<Post> posts;
 
-        public PostDeserializer(IXMLFileValidator fVal)
+        public List<Post> Posts { get => posts; }
+
+        public PostDeserializer(IXMLFileValidator validator, string fileName, string xsd)
         {
-            fileValidator = fVal;
-        }
-
-        public PostDeserializer(IXMLFileValidator fVal,string dFile,string dXSD )
-        {
-            fileValidator = fVal;
-            defaultFile = dFile;
-            defaultXSD = dXSD;
-        }
-
-        
-
-        public List<Post> DeserializeXML(string fileName, string xsd)
-        {
-
-            fileName = !string.IsNullOrEmpty(defaultFile) ? defaultFile : fileName;
-            xsd = !string.IsNullOrEmpty(defaultXSD) ? defaultXSD : xsd;
-
-            ValidateXML(fileName, xsd);
+            ValidateXML(validator, fileName, xsd);
 
             var ser = new XmlSerializer(typeof(PostCollection));
             var ps = new PostCollection();
@@ -46,10 +28,10 @@ namespace QCUtilities
                 ps = (PostCollection)ser.Deserialize(reader);
             }
 
-            return ps.Posts;
-
+            posts = ps.Posts;
         }
-        private void ValidateXML(string fileName, string xsd)
+
+        private void ValidateXML(IXMLFileValidator fileValidator, string fileName, string xsd)
         {
             if (!fileValidator.IsValidFileName(fileName))
             {
