@@ -13,9 +13,7 @@ namespace QCUtilities
 {
     public class PostDeserializer : IPostLoader
     {
-        private readonly List<Post> posts;
-
-        public List<Post> Posts { get => posts; }
+        public List<Post> Posts { get; }
 
         public PostDeserializer(IXMLFileValidator validator, string fileName, string xsd)
         {
@@ -28,7 +26,7 @@ namespace QCUtilities
                 ps = (PostCollection)ser.Deserialize(reader);
             }
 
-            posts = ps.Posts;
+            Posts = ps.Posts;
         }
 
         private void ValidateXML(IXMLFileValidator fileValidator, string fileName, string xsd)

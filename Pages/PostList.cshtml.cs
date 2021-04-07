@@ -13,20 +13,20 @@ namespace QCVault.Pages
 {
     public class PostListModel : PageModel
     {
-        private readonly ILogger<PageModel> _logger;
-        private readonly IPostLoader _postLoader;
+        private readonly ILogger<PageModel> logger;
+        private readonly IPostLoader postLoader;
 
         public List<Post> Posts { get; set; }
 
         public PostListModel(ILogger<PageModel> logger, IPostLoader postLoader)
         {
-            _logger = logger;
-            _postLoader = postLoader;
+            this.logger = logger;
+            this.postLoader = postLoader;
         }
 
         public IActionResult OnGet(int? pageNumber)
         {
-            Posts = _postLoader.Posts;
+            Posts = postLoader.Posts;
             return Page();
         }
     }
