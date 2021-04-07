@@ -34,10 +34,6 @@ namespace QCVault.Tests
     [TestFixture]
     public class XMLDeserializerUnitTests
     {
-
-
-
-
         [TestCase]
         public void DeserializeXML_InvalidFileName_Throws()
         {
@@ -73,22 +69,30 @@ namespace QCVault.Tests
         public void Setup()
         {
             XMLDeserIntTestHelper.CreateTestDir();
-            var posts = XMLDeserIntTestHelper.CreateTestCollection();
-            XMLDeserIntTestHelper.CreateXMLFromCollection(posts);
         }
         [TearDown]
         public void TearDown()
         {
+          
             XMLDeserIntTestHelper.DeleteTestDir();
         }
 
         [Test]
         public void Deserialize_CompareResultSetToOriginalSet_AreEqual()
         {
+            XMLDeserIntTestHelper.CreateTestXML(true);
+
             var posts = XMLDeserIntTestHelper.CreateTestCollection().Posts;
             var deser = DeserializerFactory.Create();
             var result = deser.Posts;
             Assert.That(posts.SequenceEqual(result));
+        }
+
+        [Test]
+        public void Deserialiaze_DuplicateURLS_Throws()
+        {
+            XMLDeserIntTestHelper.CreateTestXML(false);
+            Assert.Throws<FileLoadException>( () => DeserializerFactory.Create());
         }
     }
 
