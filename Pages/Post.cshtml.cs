@@ -14,20 +14,20 @@ namespace QCVault.Pages
     public class PostModel : PageModel
     {
 
-        private readonly ILogger<PageModel> _logger;
-        private readonly IPostLoader _postLoader;
+        private readonly ILogger<PageModel> logger;
+        private readonly IPostLoader postLoader;
 
-        public Post post {get;set;}
+        public Post Post {get;set;}
 
         public PostModel(ILogger<PageModel> logger, IPostLoader postLoader)
         {
-            _logger = logger;
-            _postLoader = postLoader;
+            this.logger = logger;
+            this.postLoader = postLoader;
         }
 
         public PageResult OnGet(string title)
         {
-            post = _postLoader.Posts.Where(x => x.URLSlug == title).FirstOrDefault();
+            Post = postLoader.Posts.Where(x => x.URLSlug == title).FirstOrDefault();
             return Page();
         }
     }

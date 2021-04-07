@@ -6,10 +6,10 @@
 
 <div class="card">
     <div class="card-body">
-        <h1 class="card-title">@Model.post.Title</h1>
-        <em><h3>by @Model.post.Author</h3></em>
-        <h4>on @Model.post.Date.ToString("dd-MM-yy HH:mm:ss")</h4>
-        <a href="@Model.post.Link">Original thread</a>
-        <pre class="card-text">@Html.Raw(Model.post.Body)</pre>
+        <h1 class="card-title">@Model.Post.Title</h1>
+        <h3><em>by @Model.Post.Author</em></h3>
+        <h4>on @Model.Post.Date.ToString("dd-MM-yy HH:mm:ss")</h4>
+        <a href="@Model.Post.Link">Original thread</a>
+        <pre class="card-text">@Html.Raw(Model.Post.Body)</pre>
     </div>
 </div>
