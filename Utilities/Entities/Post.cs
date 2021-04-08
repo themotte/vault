@@ -25,7 +25,7 @@ namespace QCUtilities.Entities
         [XmlElement("body")]
         public string Body { get; set; }
 
-        private static System.Text.RegularExpressions.Regex SpecialCharacterStripper = new System.Text.RegularExpressions.Regex(@"[^\w ]*");
+        private static readonly System.Text.RegularExpressions.Regex SpecialCharacterStripper = new System.Text.RegularExpressions.Regex(@"[^\w ]*");
         public string URLSlug
         {
             get

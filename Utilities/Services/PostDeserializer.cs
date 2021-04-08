@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
 using System.Xml;
 using System.Xml.Linq;
@@ -9,14 +8,12 @@ using System.Xml.Schema;
 using System.Xml.Serialization;
 using QCUtilities.Entities;
 using QCUtilities.Interfaces;
-using Newtonsoft.Json;
+
 namespace QCUtilities
 {
     public class PostDeserializer : IPostLoader
     {
-        private readonly List<Post> posts;
-
-        public List<Post> Posts { get => posts; }
+        public List<Post> Posts { get; }
 
         public PostDeserializer(IXMLFileValidator validator, string fileName, string xsd)
         {
@@ -28,8 +25,8 @@ namespace QCUtilities
             {
                 ps = (PostCollection)ser.Deserialize(reader);
             }
-            ValidatePostContent(ps.Posts);
-            posts = ps.Posts;
+
+            Posts = ps.Posts;
         }
 
         private void ValidateXML(IXMLFileValidator fileValidator, string fileName, string xsd)
@@ -49,36 +46,6 @@ namespace QCUtilities
             if (!fileValidator.IsXMLSchemaCompliant(fileName, xsd))
             {
                 throw new XmlException($"File is not schema compliant!");
-            }
-        }
-
-        private void ValidatePostContent(List<Post> posts)
-        {
-
-            if (posts.Count() > 0)
-            {
-
-                var guiltyURLS= (
-                                            from post in posts
-                                            group post.Title by post.Link into g
-                                            where g.Count() > 1
-                                            select g.Key
-                                        )?.ToList();
-                bool duplicateURLSFound = guiltyURLS?.Count() > 0;
-                if (duplicateURLSFound)
-                {
-                    var guiltyPost = (
-                                            from post in posts
-                                            join URL in guiltyURLS on post.Link equals URL
-                                            group post.Title by post.Link into g
-                                            let link = g.Key
-                                            let postTitles =g.AsEnumerable()
-                                            select new { link,postTitles}
-                                        ).ToList();
-
-                    var postResults = JsonConvert.SerializeObject(guiltyPost).ToString();
-                    throw new FileLoadException($"The xml contains the following duplicate URLS:\n{postResults}");
-                }
             }
         }
     }
