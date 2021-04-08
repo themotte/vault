@@ -56,7 +56,7 @@ namespace QCVault.Tests
                     Author = "Cheezemansam",
                     Date = DateTime.Parse("2020-06-29T05:17:08+00:00"),
                     Link = @"https://www.reddit.com/r/TheMotte/comments/hhtwxi/culture_war_roundup_for_the_week_of_june_29_2020/fwe75qg/?context=3&amp;sort=best",
-                    Title = "I am a poser duplicate",
+                    Title = "The Role of Precedent in the Supreme Court",
                     Body = $@"nice test"
                 };
                 var post4 = new Post()
@@ -64,7 +64,7 @@ namespace QCVault.Tests
                     Author = "questionMark",
                     Date = DateTime.Parse("2020-06-29T23:32:56+00:00"),
                     Link = "https://www.reddit.com/r/TheMotte/comments/hhtwxi/culture_war_roundup_for_the_week_of_june_29_2020/fwf5vss/?context=3&amp;sort=best",
-                    Title = "I am a poser duplicate too",
+                    Title = "The Role of Energy and Entropy in Cultural Conflict",
                     Body = $@"nice test 2 have a line too"
                 };
 
