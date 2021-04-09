@@ -18,7 +18,7 @@ namespace QCVault.Tests
                 bool fileExists = true,
                 bool validXMLFile = true,
                 bool isXMLSchemaCompliant = true,
-                bool collectionContainsUniqueULRS = true
+                bool collectionContainsUniqueURLS = true
                 )
         {
             var fakeFileValidator = Substitute.For<IXMLFileValidator>();
@@ -39,7 +39,8 @@ namespace QCVault.Tests
                 .CollectionContainsUniqueURLS(Arg.Any<List<Post>>(), out Arg.Any<string>())
                 .Returns(x =>
                 {
-                    x[1] = collectionContainsUniqueULRS? "":"Something is wrong!"; return collectionContainsUniqueULRS;
+                    x[1] = collectionContainsUniqueURLS? "":"Something is wrong!";
+                    return collectionContainsUniqueURLS;
                 });
 
             return new PostDeserializer(fakeFileValidator, fakeCollectionValidator, fileName,xsd);
@@ -103,7 +104,7 @@ namespace QCVault.Tests
         public void DeserializeXML_DuplicateURLS_Throws()
         {
             XMLDeserIntTestHelper.CreateTestXML(false);
-            Assert.Throws<FileLoadException>(() => DeserializerFactory.Create(collectionContainsUniqueULRS: false));
+            Assert.Throws<FileLoadException>(() => DeserializerFactory.Create(collectionContainsUniqueURLS: false));
         }
     }
 
