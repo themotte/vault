@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using QCUtilities.Entities;
 
 namespace QCUtilities.Interfaces
 {
@@ -14,5 +15,10 @@ namespace QCUtilities.Interfaces
 
         public bool IsXMLSchemaCompliant(string fileName,string xsd);
 
+    }
+
+    public interface IPostCollectionValidator
+    {
+        public bool CollectionContainsUniqueURLS(List<Post> postCollection, out string errorMSG);
     }
 }

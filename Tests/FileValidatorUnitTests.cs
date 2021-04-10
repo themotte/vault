@@ -57,8 +57,7 @@ namespace QCVault.Tests
 
         private static void CreateValidXMLFile()
         {
-            var postCollection = XMLDeserIntTestHelper.CreateTestCollection();
-            XMLDeserIntTestHelper.CreateXMLFromCollection(postCollection);
+            XMLDeserIntTestHelper.CreateTestXML(true);
         }
 
         private void CreateInvalidXMLFile()
