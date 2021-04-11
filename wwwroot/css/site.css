@@ -117,7 +117,9 @@ body {
 .post-list-element .thumbnail img {
   max-height: 100%;
   max-width: 100%;
-  border: 1px solid rgba(0, 0, 0, 0.3);
+
+  outline: 1px solid rgba(0, 0, 0, 0.2);
+  outline-offset: -1px;
 }
 
 .post-list-element .title {
@@ -230,4 +232,53 @@ body {
     font-size: 1.0rem;
     display: block;
   }
+}
+
+/* Post layout
+-------------------------------------------------- */
+
+.post {
+  max-width: 800px;
+  margin: auto;
+  color: #333;
+}
+
+.post .header .image {
+  width: 100%;
+  object-fit: contain;
+
+  outline: 2px solid rgba(0, 0, 0, 0.2);
+  outline-offset: -2px;
+}
+
+.post .credit {
+  font-size: 1.2rem;
+  color: #888;
+  font-weight: 300;
+}
+
+.post .header {
+    margin-bottom: 3rem;
+}
+
+.post .header .title {
+    margin-bottom: 0.1rem;
+}
+
+.post .header .credit {
+  margin-bottom: 2rem;
+}
+
+.post .header a:link, .post .header a:visited {
+  color: #888;
+}
+
+.post .header a:hover {
+  color: #88f;
+}
+
+.post .body {
+    font-family: Spectral, serif, "Segoe UI", sans-serif;
+    font-size: 1.2rem;
+    line-height: 2.2rem;
 }
