@@ -4,12 +4,17 @@
     ViewData["Title"] = "Post";
 }
 
-<div class="card">
-    <div class="card-body">
-        <h1 class="card-title">@Model.Post.Title</h1>
-        <h3><em>by @Model.Post.Author</em></h3>
-        <h4>on @Model.Post.Date.ToString("dd-MM-yy HH:mm:ss")</h4>
-        <a href="@Model.Post.Link">Original thread</a>
-        <pre class="card-text">@Html.Raw(Model.Post.Body)</pre>
+<div class="post">
+    <div class="header">
+        <h1 class="title">@Model.Post.Title</h1>
+        <div class="credit">
+            <span class="author">@Model.Post.Author</span> - <a class="original" href="@Model.Post.Link">[original thread]</a>
+        </div>
+
+        <img class="image" src=@($"https://picsum.photos/seed/{Model.Post.URLSlug}/1024/768")>
+    </div>
+
+    <div class="body">
+        @Html.Raw(Model.Post.Body)
     </div>
 </div>
