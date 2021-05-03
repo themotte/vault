@@ -11,6 +11,7 @@ using QCUtilities.Interfaces;
 
 namespace QCVault.Pages
 {
+    [ResponseCache(Duration = 3600)]
     public class PostListModel : PageModel
     {
         private readonly ILogger<PageModel> logger;
