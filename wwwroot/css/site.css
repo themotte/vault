@@ -38,6 +38,13 @@ blockquote p:last-child {
   margin-bottom: 0;
 }
 
+@media (min-width: 576px) {
+  .navbar-expand-sm .navbar-nav .nav-link {
+    padding-left: 4rem;
+    padding-right: 0rem;
+  }
+}
+
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
@@ -258,11 +265,11 @@ body {
 }
 
 .post .header {
-    margin-bottom: 3rem;
+  margin-bottom: 3rem;
 }
 
 .post .header .title {
-    margin-bottom: 0.1rem;
+  margin-bottom: 0.1rem;
 }
 
 .post .header .credit {
@@ -278,7 +285,12 @@ body {
 }
 
 .post .body {
-    font-family: Spectral, serif, "Segoe UI", sans-serif;
-    font-size: 1.2rem;
-    line-height: 2.2rem;
+  font-family: Spectral, serif, "Segoe UI", sans-serif;
+  font-size: 1.2rem;
+  line-height: 2.2rem;
+}
+
+.post .join {
+    margin: 4rem auto 4rem auto;
+    text-align: center;
 }
