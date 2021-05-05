@@ -1,4 +1,6 @@
 @{
+    Context.Response.Headers.Add("Cache-Control", "public,max-age=3600");
+
     string title = "Motte Quality Vault";
     string pageTitle = ViewData["Title"] as string;
     if (pageTitle != null && pageTitle != "")
