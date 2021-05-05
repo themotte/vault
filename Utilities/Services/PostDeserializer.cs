@@ -29,7 +29,8 @@ namespace QCUtilities
 
             ValidatePostCollection(collectionValidator, ps.Posts);
 
-            Posts = ps.Posts;
+            // We want posts to be shown in chronological order, newest-to-oldest, so we just do this here because it's silly to redo it every time we reload.
+            Posts = ps.Posts.OrderByDescending(post => post.Date).ToList();
         }
 
         private void ValidateXML(IXMLFileValidator fileValidator, string fileName, string xsd)

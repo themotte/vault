@@ -27,23 +27,24 @@ namespace QCVault.Tests
         {
             bool addDuplicateURL = !isDataValid;
 
+            // Right now the deserializer always returns in order sorted by date decreasing, so we ensure our test data has the same sorting.
 
             var posts = new PostCollection();
             var post1 = new Post()
-            {
-                Author = "Cheezemansam",
-                Date = DateTime.Parse("2020-06-29T05:17:08+00:00"),
-                Link = @"https://www.reddit.com/r/TheMotte/comments/hhtwxi/culture_war_roundup_for_the_week_of_june_29_2020/fwe75qg/?context=3&amp;sort=best",
-                Title = "The Role of Precedent in the Supreme Court",
-                Body = $@"nice test"
-            };
-            var post2 = new Post()
             {
                 Author = "questionMark",
                 Date = DateTime.Parse("2020-06-29T23:32:56+00:00"),
                 Link = "https://www.reddit.com/r/TheMotte/comments/hhtwxi/culture_war_roundup_for_the_week_of_june_29_2020/fwf5vss/?context=3&amp;sort=best",
                 Title = "The Role of Energy and Entropy in Cultural Conflict",
                 Body = $@"nice test 2 have a line too"
+            };
+            var post2 = new Post()
+            {
+                Author = "Cheezemansam",
+                Date = DateTime.Parse("2020-06-29T05:17:08+00:00"),
+                Link = @"https://www.reddit.com/r/TheMotte/comments/hhtwxi/culture_war_roundup_for_the_week_of_june_29_2020/fwe75qg/?context=3&amp;sort=best",
+                Title = "The Role of Precedent in the Supreme Court",
+                Body = $@"nice test"
             };
 
             posts.Posts.Add(post1);
@@ -53,19 +54,19 @@ namespace QCVault.Tests
             {
                 var post3 = new Post()
                 {
-                    Author = "Cheezemansam",
-                    Date = DateTime.Parse("2020-06-29T05:17:08+00:00"),
-                    Link = @"https://www.reddit.com/r/TheMotte/comments/hhtwxi/culture_war_roundup_for_the_week_of_june_29_2020/fwe75qg/?context=3&amp;sort=best",
-                    Title = "The Role of Precedent in the Supreme Court",
-                    Body = $@"nice test"
-                };
-                var post4 = new Post()
-                {
                     Author = "questionMark",
-                    Date = DateTime.Parse("2020-06-29T23:32:56+00:00"),
+                    Date = DateTime.Parse("2020-06-28T23:32:56+00:00"),
                     Link = "https://www.reddit.com/r/TheMotte/comments/hhtwxi/culture_war_roundup_for_the_week_of_june_29_2020/fwf5vss/?context=3&amp;sort=best",
                     Title = "The Role of Energy and Entropy in Cultural Conflict",
                     Body = $@"nice test 2 have a line too"
+                };
+                var post4 = new Post()
+                {
+                    Author = "Cheezemansam",
+                    Date = DateTime.Parse("2020-06-28T05:17:08+00:00"),
+                    Link = @"https://www.reddit.com/r/TheMotte/comments/hhtwxi/culture_war_roundup_for_the_week_of_june_29_2020/fwe75qg/?context=3&amp;sort=best",
+                    Title = "The Role of Precedent in the Supreme Court",
+                    Body = $@"nice test"
                 };
 
                 posts.Posts.Add(post3);
