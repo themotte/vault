@@ -1,14 +1,14 @@
 @page "{title}"
 @model PostModel
 @{
-    ViewData["Title"] = "Post";
+    ViewData["Title"] = Model.Post.Title;
 }
 
 <div class="post">
     <div class="header">
         <h1 class="title">@Model.Post.Title</h1>
         <div class="credit">
-            <span class="author">@Model.Post.Author</span> - <a class="original" href="@Model.Post.Link">[original thread]</a>
+            <span class="author">@Model.Post.Author</span> - <a class="original" href="https://www.reddit.com/r/TheMotte/@Model.Post.Link">[original thread]</a>
         </div>
 
         <img class="image" src=@($"https://picsum.photos/seed/{Model.Post.URLSlug}/1024/768")>
@@ -16,5 +16,9 @@
 
     <div class="body">
         @Html.Raw(Model.Post.Body)
+    </div>
+
+    <div class="join">
+        <p><a href="https://www.themotte.org">Join the Community</a></p>
     </div>
 </div>
