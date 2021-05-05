@@ -8,7 +8,7 @@
     <div class="header">
         <h1 class="title">@Model.Post.Title</h1>
         <div class="credit">
-            <span class="author">@Model.Post.Author</span> - <a class="original" href="https://www.reddit.com/r/TheMotte/@Model.Post.Link">[original thread]</a>
+            <span class="author">@Model.Post.Author</span> - <a class="original" href="https://www.reddit.com/@(Model.Post.Link.Trim('/'))">[original thread]</a>
         </div>
 
         <img class="image" src=@($"https://picsum.photos/seed/{Model.Post.URLSlug}/1024/768")>
