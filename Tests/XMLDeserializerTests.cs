@@ -14,23 +14,21 @@ namespace QCVault.Tests
     public static class DeserializerFactory
     {
         public static PostDeserializer Create(
-                bool validFileName = true,
-                bool fileExists = true,
-                bool validXMLFile = true,
-                bool isXMLSchemaCompliant = true,
+                bool directoryExists = true,
+                bool aFileExists = true,
+                bool filesValid = true,
                 bool collectionContainsUniqueURLS = true
                 )
         {
-            var fakeFileValidator = Substitute.For<IXMLFileValidator>();
+            var fakeFileValidator = Substitute.For<IDiskArchiveValidator>();
             var fakeCollectionValidator = Substitute.For<IPostCollectionValidator>();
 
-            string fileName = XMLDeserIntTestHelper.ValidXMLPath;
+            string directoryName = XMLDeserIntTestHelper.ValidXMLPath;
             string xsd = XMLDeserIntTestHelper.ValidXSDPath;
 
-            fakeFileValidator.IsValidFileName(Arg.Any<string>()).Returns(validFileName);
-            fakeFileValidator.FileExists(Arg.Any<string>()).Returns(fileExists);
-            fakeFileValidator.IsFileValidXML(Arg.Any<string>()).Returns(validXMLFile);
-            fakeFileValidator.IsXMLSchemaCompliant(Arg.Any<string>(), Arg.Any<string>()).Returns(isXMLSchemaCompliant);
+            fakeFileValidator.DirectoryExists(Arg.Any<string>()).Returns(directoryExists);
+            fakeFileValidator.AFileExists(Arg.Any<string>()).Returns(aFileExists);
+            fakeFileValidator.FilesValid(Arg.Any<string>(), Arg.Any<string>()).Returns(filesValid);
 
 
             
@@ -43,34 +41,28 @@ namespace QCVault.Tests
                     return collectionContainsUniqueURLS;
                 });
 
-            return new PostDeserializer(fakeFileValidator, fakeCollectionValidator, fileName,xsd);
+            return new PostDeserializer(fakeFileValidator, fakeCollectionValidator, directoryName, xsd);
         }
     }
     [TestFixture]
     public class XMLDeserializerUnitTests
     {
         [TestCase]
-        public void DeserializeXML_InvalidFileName_Throws()
+        public void DeserializeXML_DirectoryNotExists_Throws()
         {
-            Assert.Throws<ArgumentOutOfRangeException>(() => DeserializerFactory.Create(validFileName: false));
+            Assert.Throws<DirectoryNotFoundException>(() => DeserializerFactory.Create(directoryExists: false));
         }
 
         [TestCase]
         public void DeserializeXML_FileNotExists_Throws()
         {
-            Assert.Throws<FileNotFoundException>(() => DeserializerFactory.Create(fileExists: false));
+            Assert.Throws<FileNotFoundException>(() => DeserializerFactory.Create(aFileExists: false));
         }
 
         [TestCase]
-        public void DeserializeXML_NotAValidXMLFILE_Throws()
+        public void DeserializeXML_FilesNotValid_Throws()
         {
-            Assert.Throws<InvalidDataException>(() => DeserializerFactory.Create(validXMLFile: false));
-        }
-
-        [TestCase]
-        public void DeserializeXML_NoSchemaCompliant_Throws()
-        {
-            Assert.Throws<XmlException>(() => DeserializerFactory.Create(isXMLSchemaCompliant: false));
+            Assert.Throws<XmlException>(() => DeserializerFactory.Create(filesValid: false));
         }
     }
 
@@ -82,6 +74,7 @@ namespace QCVault.Tests
         {
             XMLDeserIntTestHelper.CreateTestDir();
         }
+
         [TearDown]
         public void TearDown()
         {
@@ -94,7 +87,7 @@ namespace QCVault.Tests
         {
             XMLDeserIntTestHelper.CreateTestXML(true);
 
-            var posts = XMLDeserIntTestHelper.CreateTestCollection().Posts;
+            var posts = XMLDeserIntTestHelper.CreateTestCollection();
             var deser = DeserializerFactory.Create();
             var result = deser.Posts;
             Assert.That(posts.SequenceEqual(result));

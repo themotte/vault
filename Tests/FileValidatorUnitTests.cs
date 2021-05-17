@@ -10,26 +10,6 @@ using QCUtilities;
 namespace QCVault.Tests
 {
     [TestFixture]
-    public class FileValidatorUnitTests
-    {
-        [TestCase(@"C:\Users\User\invalidfileName")]
-        public void IsValidFileName_InvalidName_ReturnsFalse(string fileName)
-        {
-            var fileVal = new FileValidator();
-            var result = fileVal.IsValidFileName(fileName);
-            Assert.IsFalse(result);
-        }
-
-        [TestCase(@"C:\Users\User\validFileName.xml")]
-        public void IsValidFileName_ValidName_ReturnsTrue(string fileName)
-        {
-            var fileVal = new FileValidator();
-            var result = fileVal.IsValidFileName(fileName);
-            Assert.IsTrue(result);
-        }
-    }
-
-    [TestFixture]
     public class FileValidatorIntegrationTests
     {
 
@@ -48,21 +28,23 @@ namespace QCVault.Tests
 
         private void CreateTestFiles()
         {
-            CreateInvalidXMLFile();
-            CreateEmptyXMLFile();
-            CreateValidXMLFile();
-            CreateEmptyTXTFile();
+            CreateInvalidXMLDirectory();
+            CreateEmptyDirectory();
+            CreateValidXMLDirectory();
             LoadXSDFile();
         }
 
-        private static void CreateValidXMLFile()
+        private static void CreateValidXMLDirectory()
         {
             XMLDeserIntTestHelper.CreateTestXML(true);
         }
 
-        private void CreateInvalidXMLFile()
+        private void CreateInvalidXMLDirectory()
         {
-            var invalidFilePath = Path.Combine(XMLDeserIntTestHelper.IntDestDir, "invalid.xml");
+            var path = Path.Combine(XMLDeserIntTestHelper.IntDestDir, XMLDeserIntTestHelper.INVALIDXML);
+            Directory.CreateDirectory(path);
+
+            var invalidFilePath = Path.Combine(path, "invalid.xml");
             using (var writer = XmlWriter.Create(invalidFilePath))
             {
                 writer.WriteStartElement("book");
@@ -75,18 +57,10 @@ namespace QCVault.Tests
             }
         }
 
-        private void CreateEmptyXMLFile()
+        private void CreateEmptyDirectory()
         {
-            var invalidFilePath = Path.Combine(XMLDeserIntTestHelper.IntDestDir, XMLDeserIntTestHelper.EMPTYXML);
-            using (var writer = XmlWriter.Create(invalidFilePath))
-            {
-                ;
-            }
-        }
-
-        private void CreateEmptyTXTFile()
-        {
-            File.Create(Path.Combine(XMLDeserIntTestHelper.IntDestDir, XMLDeserIntTestHelper.EMPTYTXT)).Close();
+            var invalidFilePath = Path.Combine(XMLDeserIntTestHelper.IntDestDir, XMLDeserIntTestHelper.EMPTYDIR);
+            Directory.CreateDirectory(invalidFilePath);
         }
 
         private void LoadXSDFile()
@@ -97,61 +71,57 @@ namespace QCVault.Tests
         }
 
         [Test]
-        public void FileValidator_FileNotExists_ReturnsFalse()
+        public void FileValidator_DirectoryExists_ReturnsFalse()
         {
-            var val = new FileValidator();
-            string randomFileName = "randomStuffAtTheTestDir" + new Random().Next(0, 100000);
-            var result = val.FileExists(Path.Combine(XMLDeserIntTestHelper.IntDestDir, randomFileName));
+            var val = new DiskArchiveValidator();
+            string randomDirName = "randomStuffAtTheTestDir" + new Random().Next(0, 100000);
+            var result = val.DirectoryExists(Path.Combine(XMLDeserIntTestHelper.IntDestDir, randomDirName));
             Assert.IsFalse(result);
         }
 
         [Test]
-        public void FileValidator_FileExists_ReturnsTrue()
+        public void FileValidator_DirectoryExists_ReturnsTrue()
         {
-            var val = new FileValidator();
-            var result = val.FileExists(Path.Combine(XMLDeserIntTestHelper.IntDestDir, XMLDeserIntTestHelper.VALIDXML));
+            var val = new DiskArchiveValidator();
+            var result = val.DirectoryExists(Path.Combine(XMLDeserIntTestHelper.IntDestDir, XMLDeserIntTestHelper.VALIDXML));
             Assert.IsTrue(result);
         }
 
         [Test]
-        public void IsFileValidXML_NotValid_ReturnsFalse()
+        public void IsFileValidXML_AFileExists_ReturnsFalse()
         {
-            var val = new FileValidator();
-            var result1 = val.IsFileValidXML(Path.Combine(XMLDeserIntTestHelper.IntDestDir, XMLDeserIntTestHelper.EMPTYXML));
-            var result2 = val.IsFileValidXML(Path.Combine(XMLDeserIntTestHelper.IntDestDir, XMLDeserIntTestHelper.EMPTYTXT));
-            var result = result1 && result2;
+            var val = new DiskArchiveValidator();
+            var result = val.AFileExists(Path.Combine(XMLDeserIntTestHelper.IntDestDir, XMLDeserIntTestHelper.EMPTYDIR));
             Assert.IsFalse(result);
         }
 
         [Test]
-        public void IsFileValidXML_Valid_ReturnsTrue()
+        public void IsFileValidXML_AFileExists_ReturnsTrue()
         {
-            var val = new FileValidator();
-            var result = val.IsFileValidXML(Path.Combine(XMLDeserIntTestHelper.IntDestDir, XMLDeserIntTestHelper.VALIDXML));
+            var val = new DiskArchiveValidator();
+            var result = val.AFileExists(Path.Combine(XMLDeserIntTestHelper.IntDestDir, XMLDeserIntTestHelper.VALIDXML));
             Assert.IsTrue(result);
         }
 
 
         [Test]
-        public void IsXMLSchemaCompliant_NotCompliant_ReturnsFalse()
+        public void IsXMLSchemaCompliant_FilesValid_ReturnsFalse()
         {
-            var val = new FileValidator();
+            var val = new DiskArchiveValidator();
             var xmlPath = Path.Combine(XMLDeserIntTestHelper.IntDestDir, XMLDeserIntTestHelper.INVALIDXML);
             var schemaPath = Path.Combine(XMLDeserIntTestHelper.IntDestDir, XMLDeserIntTestHelper.SCHEMA);
-            var result = val.IsXMLSchemaCompliant(xmlPath, schemaPath);
+            var result = val.FilesValid(xmlPath, schemaPath);
             Assert.IsFalse(result);
         }
 
         [Test]
-        public void IsXMLSchemaCompliant_Compliant_ReturnsTrue()
+        public void IsXMLSchemaCompliant_FilesValid_ReturnsTrue()
         {
-            var val = new FileValidator();
+            var val = new DiskArchiveValidator();
             var xmlPath = Path.Combine(XMLDeserIntTestHelper.IntDestDir, XMLDeserIntTestHelper.VALIDXML);
             var schemaPath = Path.Combine(XMLDeserIntTestHelper.IntDestDir, XMLDeserIntTestHelper.SCHEMA);
-            var result = val.IsXMLSchemaCompliant(xmlPath, schemaPath);
+            var result = val.FilesValid(xmlPath, schemaPath);
             Assert.IsTrue(result);
         }
-
-
     }
 }

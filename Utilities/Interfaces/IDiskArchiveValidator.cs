@@ -5,16 +5,13 @@ using QCUtilities.Entities;
 
 namespace QCUtilities.Interfaces
 {
-    public interface IXMLFileValidator
+    public interface IDiskArchiveValidator
     {
-        public bool IsValidFileName(string fileName);
+        public bool DirectoryExists(string path);
 
-        public bool FileExists(string fileName);
+        public bool AFileExists(string path);
 
-        public bool IsFileValidXML(string fileName);
-
-        public bool IsXMLSchemaCompliant(string fileName,string xsd);
-
+        public bool FilesValid(string path, string xsd);
     }
 
     public interface IPostCollectionValidator

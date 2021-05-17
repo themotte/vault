@@ -14,7 +14,7 @@ namespace QCVault.Tests
         public void PostCollection_UniqueURLS_ReturnsTrue()
         {
             var collectionValidator = new CollectionValidator();
-            var posts = XMLDeserIntTestHelper.CreateTestCollection(true).Posts;
+            var posts = XMLDeserIntTestHelper.CreateTestCollection(true);
             var result = collectionValidator.CollectionContainsUniqueURLS(posts, out string errorMSG);
             Assert.IsTrue(result);
             Assert.IsEmpty(errorMSG);
@@ -24,7 +24,7 @@ namespace QCVault.Tests
         public void PostCollection_DuplicateURLS_ReturnsFalse()
         {
             var collectionValidator = new CollectionValidator();
-            var posts = XMLDeserIntTestHelper.CreateTestCollection(false).Posts;
+            var posts = XMLDeserIntTestHelper.CreateTestCollection(false);
             var result = collectionValidator.CollectionContainsUniqueURLS(posts, out string errorMSG);
             Assert.IsFalse(result);
             Assert.IsNotEmpty(errorMSG);
