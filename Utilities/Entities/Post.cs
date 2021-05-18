@@ -51,19 +51,4 @@ namespace QCUtilities.Entities
             return base.GetHashCode();
         }
     }
-
-    [Serializable]
-    [XmlRoot("posts")]
-    public class PostCollection
-    {
-        
-
-        public PostCollection()
-        {
-            Posts = new List<Post>();
-        }
-
-        [XmlElement("post")]
-        public List<Post> Posts { get; set; }
-    }
 }
