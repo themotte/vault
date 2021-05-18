@@ -10,7 +10,7 @@ using QCUtilities;
 namespace QCVault.Tests
 {
     [TestFixture]
-    public class FileValidatorIntegrationTests
+    public class DiskArchiveValidatorIntegrationTests
     {
 
         [SetUp]
@@ -71,7 +71,7 @@ namespace QCVault.Tests
         }
 
         [Test]
-        public void FileValidator_DirectoryExists_ReturnsFalse()
+        public void DirectoryExists_ReturnsFalse()
         {
             var val = new DiskArchiveValidator();
             string randomDirName = "randomStuffAtTheTestDir" + new Random().Next(0, 100000);
@@ -80,7 +80,7 @@ namespace QCVault.Tests
         }
 
         [Test]
-        public void FileValidator_DirectoryExists_ReturnsTrue()
+        public void DirectoryExists_ReturnsTrue()
         {
             var val = new DiskArchiveValidator();
             var result = val.DirectoryExists(Path.Combine(XMLDeserIntTestHelper.IntDestDir, XMLDeserIntTestHelper.VALIDXML));
@@ -88,7 +88,7 @@ namespace QCVault.Tests
         }
 
         [Test]
-        public void IsFileValidXML_AFileExists_ReturnsFalse()
+        public void AFileExists_ReturnsFalse()
         {
             var val = new DiskArchiveValidator();
             var result = val.AFileExists(Path.Combine(XMLDeserIntTestHelper.IntDestDir, XMLDeserIntTestHelper.EMPTYDIR));
@@ -96,16 +96,15 @@ namespace QCVault.Tests
         }
 
         [Test]
-        public void IsFileValidXML_AFileExists_ReturnsTrue()
+        public void AFileExists_ReturnsTrue()
         {
             var val = new DiskArchiveValidator();
             var result = val.AFileExists(Path.Combine(XMLDeserIntTestHelper.IntDestDir, XMLDeserIntTestHelper.VALIDXML));
             Assert.IsTrue(result);
         }
 
-
         [Test]
-        public void IsXMLSchemaCompliant_FilesValid_ReturnsFalse()
+        public void FilesValid_ReturnsFalse()
         {
             var val = new DiskArchiveValidator();
             var xmlPath = Path.Combine(XMLDeserIntTestHelper.IntDestDir, XMLDeserIntTestHelper.INVALIDXML);
@@ -115,7 +114,7 @@ namespace QCVault.Tests
         }
 
         [Test]
-        public void IsXMLSchemaCompliant_FilesValid_ReturnsTrue()
+        public void FilesValid_ReturnsTrue()
         {
             var val = new DiskArchiveValidator();
             var xmlPath = Path.Combine(XMLDeserIntTestHelper.IntDestDir, XMLDeserIntTestHelper.VALIDXML);
