@@ -69,13 +69,13 @@ namespace QCVault.Tests
     [TestFixture]
     public class XMLDeserializerIntegrationTests
     {
-        [SetUp]
+        [OneTimeSetUp]
         public void Setup()
         {
             XMLDeserIntTestHelper.CreateTestDir();
         }
 
-        [TearDown]
+        [OneTimeTearDown]
         public void TearDown()
         {
           

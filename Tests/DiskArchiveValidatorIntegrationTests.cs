@@ -13,14 +13,14 @@ namespace QCVault.Tests
     public class DiskArchiveValidatorIntegrationTests
     {
 
-        [SetUp]
+        [OneTimeSetUp]
         public void Setup()
         {
             XMLDeserIntTestHelper.CreateTestDir();
             CreateTestFiles();
         }
 
-        [TearDown]
+        [OneTimeTearDown]
         public void TearDown()
         {
             XMLDeserIntTestHelper.DeleteTestDir();
