@@ -26,9 +26,13 @@ namespace QCVault.Pages
             this.postLoader = postLoader;
         }
 
-        public PageResult OnGet(string title)
+        public IActionResult OnGet(string title)
         {
             Post = postLoader.Posts.Where(x => x.URLSlug == title).FirstOrDefault();
+            if (Post == null)
+            {
+                return NotFound();
+            }
             return Page();
         }
     }
