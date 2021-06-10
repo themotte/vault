@@ -13,13 +13,14 @@ using QCVault.Utilities.Services;
 
 namespace QCVault.Pages
 {
+    [ResponseCache(Duration = 3600)]
     public class SitemapModel : PageModel
     {
 
         private readonly ILogger<PageModel> logger;
         private readonly IPostLoader postLoader;
 
-
+        
         public SitemapModel(ILogger<PageModel> logger, IPostLoader postLoader)
         {
             this.logger = logger;
@@ -32,27 +33,23 @@ namespace QCVault.Pages
 
             // get a list of published posts
             var posts = postLoader.Posts;
-
-            // get last modified date of the home page
+            
             var siteMapBuilder = new SitemapBuilder();
 
             // add the home page to the sitemap
-            siteMapBuilder.AddUrl(baseUrl, modified: DateTime.UtcNow, changeFrequency: ChangeFrequency.Weekly, priority: 1.0);
+            siteMapBuilder.AddUrl(baseUrl);
 
             // add the blog posts to the sitemap
             foreach (var post in posts)
             {
-                siteMapBuilder.AddUrl(baseUrl + @"post/" + post.URLSlug, modified: post.Date, changeFrequency: null, priority: 0.9);
+                siteMapBuilder.AddUrl(baseUrl + @"post/" + post.URLSlug);
             }
 
-            var path = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"Pages\");
-            var dir = new DirectoryInfo(path);
-
-            var Pages = new List<string>() {
-                "About","Error","PostList" };
-            foreach (var staticPage in Pages)
+            var pages = new List<string>() {
+                "about"};
+            foreach (var staticPage in pages)
             {
-                    siteMapBuilder.AddUrl(baseUrl + staticPage, modified: null, changeFrequency: null, priority: 0.9);
+                    siteMapBuilder.AddUrl(baseUrl + staticPage);
             }
 
 
