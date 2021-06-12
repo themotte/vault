@@ -57,8 +57,6 @@ namespace QCVault.Tests
         public async Task Get_EndpointsReturnSuccessAndCorrectContentType_ForPosts()
         {
             var client = factory.CreateClient();
-
-            string xmlPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Posts", "posts");
             
             var des = CreateDeserializer();
 
