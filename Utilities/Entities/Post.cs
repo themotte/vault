@@ -22,8 +22,52 @@ namespace QCUtilities.Entities
         [XmlElement("title")]
         public string Title { get; set; }
 
+        public class VerbatimBlob : IXmlSerializable
+        {
+            public string contents;
+
+            public System.Xml.Schema.XmlSchema GetSchema()
+            {
+                return null;
+            }
+
+            public void ReadXml(System.Xml.XmlReader reader)
+            {
+                // this is simultaneously easier and more horrible than I was expecting
+                contents = reader.ReadInnerXml();
+            }
+
+            public void WriteXml(System.Xml.XmlWriter writer)
+            {
+                writer.WriteString(contents);
+            }
+        }
+
+        [XmlElement("context")]
+        public VerbatimBlob Context { get; set; }
+
         [XmlElement("body")]
         public string Body { get; set; }
+
+        private string bodyCompiled = null;
+        public string BodyCompiled
+        {
+            get
+            {
+                if (bodyCompiled == null)
+                {
+                    bodyCompiled = Body;
+
+                    if (Context != null)
+                    {
+                        // yes I know this is awful
+                        bodyCompiled = $"<blockquote>{Context.contents}</blockquote>" + bodyCompiled;
+                    }
+                }
+
+                return bodyCompiled;
+            }
+        }
 
         private static readonly System.Text.RegularExpressions.Regex SpecialCharacterStripper = new System.Text.RegularExpressions.Regex(@"[^\w ]*");
         public string URLSlug
