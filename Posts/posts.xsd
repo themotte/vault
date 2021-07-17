@@ -14,7 +14,13 @@
 						</xsd:sequence>
 					</xsd:complexType>
 				</xsd:element>
-				<xsd:element name="body" type="xsd:string" />
+				<xsd:element name="body">
+					<xsd:complexType mixed="true">
+						<xsd:sequence>
+							<xsd:any minOccurs="0" maxOccurs="unbounded" processContents="skip" />
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
 			</xsd:sequence>
 		</xsd:complexType>
 	</xsd:element>
