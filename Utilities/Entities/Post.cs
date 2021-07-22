@@ -89,7 +89,7 @@ namespace QCUtilities.Entities
                 Date.Equals(item.Date) &&
                 Link.Equals(item.Link) &&
                 Title.Equals(item.Title) &&
-                Body.Equals(item.Body);
+                Body.contents.Equals(item.Body.contents);
             return result;
         }
 
