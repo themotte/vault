@@ -11,24 +11,8 @@ using QCUtilities;
 namespace QCVault.Tests
 {
     [TestFixture]
-    public class PageValidationTests
+    public class PageValidationTests : LiveServerTests
     {
-        private WebApplicationFactory<QCVault.Startup> factory;
-        [OneTimeSetUp]
-        public void Setup()
-        {
-            factory =
-                new WebApplicationFactory<Startup>()
-                .WithWebHostBuilder(builder => builder.UseSolutionRelativeContentRoot(""));
-        }
-
-        [OneTimeTearDown]
-        public void Teardown()
-        {
-            factory?.Dispose();
-        }
-
-
         public PostDeserializer CreateDeserializer()
         {
             string xmlPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Posts", "posts");
