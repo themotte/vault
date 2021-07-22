@@ -26,6 +26,9 @@ namespace QCUtilities.Entities
         {
             public string contents;
 
+            public VerbatimBlob() { }
+            public VerbatimBlob(string contents) { this.contents = contents; }
+
             public System.Xml.Schema.XmlSchema GetSchema()
             {
                 return null;
@@ -47,7 +50,7 @@ namespace QCUtilities.Entities
         public VerbatimBlob Context { get; set; }
 
         [XmlElement("body")]
-        public string Body { get; set; }
+        public VerbatimBlob Body { get; set; }
 
         private string bodyCompiled = null;
         public string BodyCompiled
@@ -56,7 +59,7 @@ namespace QCUtilities.Entities
             {
                 if (bodyCompiled == null)
                 {
-                    bodyCompiled = Body;
+                    bodyCompiled = Body.contents;
 
                     if (Context != null)
                     {
@@ -86,7 +89,7 @@ namespace QCUtilities.Entities
                 Date.Equals(item.Date) &&
                 Link.Equals(item.Link) &&
                 Title.Equals(item.Title) &&
-                Body.Equals(item.Body);
+                Body.contents.Equals(item.Body.contents);
             return result;
         }
 

@@ -8,5 +8,5 @@
     <blockquote>nested context test</blockquote>
     more context
   </context>
-  <body>&lt;div class="md"&gt;&lt;p&gt;Nam quis tortor semper, pulvinar ex eget, porta massa. Aliquam ut elementum eros. Pellentesque finibus lacinia diam quis congue. Vestibulum gravida eget nibh eu aliquam. Donec at dolor egestas, mollis metus vel, sagittis magna. Vestibulum placerat lacus rutrum, lacinia sapien non, efficitur turpis. Curabitur non molestie nulla.&lt;/p&gt;</body>
+  <body><p>Nam quis tortor semper, pulvinar ex eget, porta massa. Aliquam ut elementum eros. Pellentesque finibus lacinia diam quis congue. Vestibulum gravida eget nibh eu aliquam. Donec at dolor egestas, mollis metus vel, sagittis magna. Vestibulum placerat lacus rutrum, lacinia sapien non, efficitur turpis. Curabitur non molestie nulla.</p></body>
 </Post>
