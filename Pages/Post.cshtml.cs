@@ -11,7 +11,7 @@ using QCUtilities.Interfaces;
 
 namespace QCVault.Pages
 {
-    [ResponseCache(Duration = 3600)]
+    [ResponseCache(CacheProfileName = "Static")]
     public class PostModel : PageModel
     {
 
