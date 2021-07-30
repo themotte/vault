@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace QCVault.Pages
 {
-    [ResponseCache(Duration = 3600)]
+    [ResponseCache(CacheProfileName = "Static")]
     public class AboutModel : PageModel
     {
         private readonly ILogger<AboutModel> _logger;
