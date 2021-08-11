@@ -19,11 +19,12 @@ namespace QCVault.Tests
             string xsd = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Posts", "posts.xsd");
             return new PostDeserializer(new DiskArchiveValidator(), new CollectionValidator(), xmlPath, xsd);
         }
-        [TestCase("/")]
-        [TestCase("/About")]
-        [TestCase("/Error")]
-        [TestCase("/PostList")]
-        public async Task Get_EndpointsReturnSuccessAndCorrectContentType(string url)
+        [TestCase("/", "text/html; charset=utf-8")]
+        [TestCase("/About", "text/html; charset=utf-8")]
+        [TestCase("/Error", "text/html; charset=utf-8")]
+        [TestCase("/PostList", "text/html; charset=utf-8")]
+        [TestCase("/Rss", "application/rss+xml; charset=utf-8")]
+        public async Task Get_EndpointsReturnSuccessAndCorrectContentType(string url,string contentType)
         {
             // Arrange
             var client = factory.CreateClient();
@@ -33,9 +34,10 @@ namespace QCVault.Tests
 
             // Assert
             response.EnsureSuccessStatusCode(); // Status Code 200-299
-            Assert.AreEqual("text/html; charset=utf-8",
+            Assert.AreEqual(contentType,
                 response.Content.Headers.ContentType.ToString());
         }
+
 
         [Test]
         public async Task Get_EndpointsReturnSuccessAndCorrectContentType_ForPosts()
