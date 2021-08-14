@@ -1,4 +1,4 @@
-﻿@{
+@{
     string title = "Motte Quality Vault";
     string pageTitle = ViewData["Title"] as string;
     if (pageTitle != null && pageTitle != "")
@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Spectral">
+    <link rel="alternate" type="application/rss+xml" title="RSS Feed for the motte"href="/rss" />
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BZN9TQEPB5"></script>
@@ -26,7 +27,7 @@
 
         gtag('config', 'G-BZN9TQEPB5');
     </script>
-	
+
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <!-- there should be a 32x32 here but chrome keeps picking it and it looks like butt -->
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
