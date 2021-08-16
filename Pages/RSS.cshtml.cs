@@ -1,10 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.ServiceModel.Syndication;
 using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -25,23 +23,20 @@ namespace QCVault.Pages
         }
         public IActionResult OnGet()
         {
-            var feed = new SyndicationFeed("Motte news", "New Quality Contributions", new Uri("https://www.vault.themotte.org/RSS"), "RSSUrl", DateTime.Now)
-            {
-                Copyright = new TextSyndicationContent($"{DateTime.Now.Year} Motte Quality Vault")
-            };
-
             var items = new List<SyndicationItem>();
-            var postings = postLoader.Posts;
-            foreach (var item in postings)
+            foreach (var item in postLoader.Posts)
             {
-                //post/beware_of_these_7_playtime_mistakes
                 var postUrl = string.Concat("https://www.vault.themotte.org/posts/", item.URLSlug);
                 var title = item.Title;
-                var description = item.Body.contents.Substring(0, 300);
+                var description = item.Body.contents.Substring(0, Math.Min(1500, item.Body.contents.Length));
                 items.Add(new SyndicationItem(title, description, new Uri(postUrl), item.URLSlug, item.Date));
             }
 
-            feed.Items = items;
+            var feed = new SyndicationFeed("Motte Quality Contributions", "The best from The Motte", new Uri("https://www.vault.themotte.org/rss"), "RSSUrl", DateTime.Now)
+            {
+                Copyright = new TextSyndicationContent($"{DateTime.Now.Year} Motte Quality Vault"),
+                Items = items,
+            };
             var settings = new XmlWriterSettings
             {
                 Encoding = Encoding.UTF8,
