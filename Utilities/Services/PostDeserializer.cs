@@ -26,8 +26,14 @@ namespace QCUtilities
             // Hacky approach to priority blocks
             foreach (var extension in new string[] { "p1", "p2", "p3" })
             {
+                var fullPath = Path.Combine(path, extension);
+                if (!Directory.Exists(fullPath))
+                {
+                    continue;
+                }
+
                 var postChunk = new List<Post>();
-                foreach (var fileName in Directory.GetFiles(Path.Combine(path, extension)))
+                foreach (var fileName in Directory.GetFiles(fullPath))
                 {
                     var ser = new XmlSerializer(typeof(Post));
                     Post post = null;
