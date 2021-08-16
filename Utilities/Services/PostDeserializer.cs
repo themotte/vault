@@ -22,21 +22,33 @@ namespace QCUtilities
             ValidateDirectory(validator, path, xsd);
 
             Posts = new List<Post>();
-            foreach (var fileName in Directory.GetFiles(path))
+
+            // Hacky approach to priority blocks
+            foreach (var extension in new string[] { "p1", "p2", "p3" })
             {
-                var ser = new XmlSerializer(typeof(Post));
-                Post post = null;
-                using (Stream reader = new FileStream(fileName, FileMode.Open))
+                var fullPath = Path.Combine(path, extension);
+                if (!Directory.Exists(fullPath))
                 {
-                    post = (Post)ser.Deserialize(reader);
+                    continue;
                 }
-                Posts.Add(post);
+
+                var postChunk = new List<Post>();
+                foreach (var fileName in Directory.GetFiles(fullPath))
+                {
+                    var ser = new XmlSerializer(typeof(Post));
+                    Post post = null;
+                    using (Stream reader = new FileStream(fileName, FileMode.Open))
+                    {
+                        post = (Post)ser.Deserialize(reader);
+                    }
+                    postChunk.Add(post);
+                }
+
+                // We want posts to be shown in chronological order, newest-to-oldest, so we just do this here because it's silly to redo it every time we reload.
+                Posts.AddRange(postChunk.OrderByDescending(post => post.Date));
             }
 
             ValidatePostCollection(collectionValidator, Posts);
-
-            // We want posts to be shown in chronological order, newest-to-oldest, so we just do this here because it's silly to redo it every time we reload.
-            Posts = Posts.OrderByDescending(post => post.Date).ToList();
         }
 
         private void ValidateDirectory(IDiskArchiveValidator archiveValidator, string path, string xsd)
@@ -77,7 +89,7 @@ namespace QCUtilities
 
         public bool AFileExists(string path)
         {
-            return Directory.GetFiles(path).Any();
+            return Directory.GetFiles(path, "*.xml", SearchOption.AllDirectories).Any();
         }
 
         public bool FilesValid(string path, string xsd)
