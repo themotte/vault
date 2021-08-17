@@ -72,6 +72,22 @@ namespace QCUtilities.Entities
             }
         }
 
+        private string bodyExcerpt = null;
+        public string BodyExcerpt
+        {
+            get
+            {
+                if (bodyExcerpt == null)
+                {
+                    bodyExcerpt = QCVault.Utilities.ExcerptGenerator.Generate(Body.contents, 1500);
+
+                    bodyExcerpt += $"<p>Read more at <a href=\"https://www.vault.themotte.org/posts/{URLSlug}\">The Vault</a></p>";
+                }
+
+                return bodyExcerpt;
+            }
+        }
+
         private static readonly System.Text.RegularExpressions.Regex SpecialCharacterStripper = new System.Text.RegularExpressions.Regex(@"[^\w ]*");
         public string URLSlug
         {
@@ -79,6 +95,15 @@ namespace QCUtilities.Entities
             {
                 return SpecialCharacterStripper.Replace(Title, "").Replace(" ", "_").ToLower();
             }
+        }
+
+        public void RegenerateCachedData()
+        {
+            int bytes = 0;
+            bytes += BodyCompiled.Length;
+            bytes += BodyExcerpt.Length;
+
+            // We don't actually care about the bytes, I just needed an excuse to call the properties.
         }
 
         public override bool Equals(object obj)
