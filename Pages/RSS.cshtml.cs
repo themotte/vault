@@ -28,7 +28,7 @@ namespace QCVault.Pages
             {
                 var postUrl = string.Concat("https://www.vault.themotte.org/posts/", item.URLSlug);
                 var title = item.Title;
-                var description = item.Body.contents.Substring(0, Math.Min(1500, item.Body.contents.Length));
+                var description = item.BodyExcerpt;
                 items.Add(new SyndicationItem(title, description, new Uri(postUrl), item.URLSlug, item.Date));
             }
 

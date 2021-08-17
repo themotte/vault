@@ -49,6 +49,12 @@ namespace QCUtilities
             }
 
             ValidatePostCollection(collectionValidator, Posts);
+
+            foreach (var post in Posts)
+            {
+                // get any parsing errors out of the way sooner rather than later, at the cost of a tiny slice of startup time
+                post.RegenerateCachedData();
+            }
         }
 
         private void ValidateDirectory(IDiskArchiveValidator archiveValidator, string path, string xsd)
