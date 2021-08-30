@@ -81,7 +81,7 @@ namespace QCUtilities.Entities
                 {
                     bodyExcerpt = QCVault.Utilities.ExcerptGenerator.Generate(Body.contents, 1500);
 
-                    bodyExcerpt += $"<p>Read more at <a href=\"https://www.vault.themotte.org/posts/{URLSlug}\">The Vault</a></p>";
+                    bodyExcerpt += $"<p>Read more at <a href=\"https://www.vault.themotte.org{FullURL}\">The Vault</a></p>";
                 }
 
                 return bodyExcerpt;
@@ -95,6 +95,11 @@ namespace QCUtilities.Entities
             {
                 return SpecialCharacterStripper.Replace(Title, "").Replace(" ", "_").ToLower();
             }
+        }
+
+        public string FullURL
+        {
+            get => "/post/" + URLSlug;
         }
 
         public void RegenerateCachedData()

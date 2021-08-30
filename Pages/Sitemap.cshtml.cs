@@ -29,7 +29,7 @@ namespace QCVault.Pages
 
         public IActionResult OnGet()
         {
-            string baseUrl = "https://www.vault.themotte.org/";
+            string baseUrl = "https://www.vault.themotte.org";
 
             // get a list of published posts
             var posts = postLoader.Posts;
@@ -37,19 +37,19 @@ namespace QCVault.Pages
             var siteMapBuilder = new SitemapBuilder();
 
             // add the home page to the sitemap
-            siteMapBuilder.AddUrl(baseUrl);
+            siteMapBuilder.AddUrl(baseUrl + "/");
 
             // add the blog posts to the sitemap
             foreach (var post in posts)
             {
-                siteMapBuilder.AddUrl(baseUrl + @"post/" + post.URLSlug);
+                siteMapBuilder.AddUrl(baseUrl + post.FullURL);
             }
 
             var pages = new List<string>() {
                 "about"};
             foreach (var staticPage in pages)
             {
-                    siteMapBuilder.AddUrl(baseUrl + staticPage);
+                    siteMapBuilder.AddUrl(baseUrl + "/" + staticPage);
             }
 
 
