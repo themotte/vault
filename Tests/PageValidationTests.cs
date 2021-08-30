@@ -13,12 +13,6 @@ namespace QCVault.Tests
     [TestFixture]
     public class PageValidationTests : LiveServerTests
     {
-        public PostDeserializer CreateDeserializer()
-        {
-            string xmlPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Posts", "posts");
-            string xsd = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Posts", "posts.xsd");
-            return new PostDeserializer(new DiskArchiveValidator(), new CollectionValidator(), xmlPath, xsd);
-        }
         [TestCase("/", "text/html; charset=utf-8")]
         [TestCase("/About", "text/html; charset=utf-8")]
         [TestCase("/Error", "text/html; charset=utf-8")]
@@ -44,13 +38,12 @@ namespace QCVault.Tests
         {
             var client = factory.CreateClient();
             
-            var des = CreateDeserializer();
+            var des = TestUtil.CreateDeserializer();
 
             var posts = des.Posts;
             foreach (var post in posts)
             {
-                string url = $@"/post/{post.URLSlug}";
-                var response = await client.GetAsync(url);
+                var response = await client.GetAsync(post.FullURL);
                 response.EnsureSuccessStatusCode(); // Status Code 200-299
                 Assert.AreEqual("text/html; charset=utf-8",
                     response.Content.Headers.ContentType.ToString());

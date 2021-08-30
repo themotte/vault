@@ -26,7 +26,7 @@ namespace QCVault.Pages
             var items = new List<SyndicationItem>();
             foreach (var item in postLoader.Posts)
             {
-                var postUrl = string.Concat("https://www.vault.themotte.org/posts/", item.URLSlug);
+                var postUrl = "https://www.vault.themotte.org" + item.FullURL;
                 var title = item.Title;
                 var description = item.BodyExcerpt;
                 items.Add(new SyndicationItem(title, description, new Uri(postUrl), item.URLSlug, item.Date));
