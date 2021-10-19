@@ -22,6 +22,10 @@ namespace QCUtilities.Entities
         [XmlElement("title")]
         public string Title { get; set; }
 
+        [XmlArray("redirect")]
+        [XmlArrayItem("li")]
+        public List<string> Redirect { get; set; } = new List<string>();
+
         public class VerbatimBlob : IXmlSerializable
         {
             public string contents;
@@ -94,6 +98,14 @@ namespace QCUtilities.Entities
             get
             {
                 return SpecialCharacterStripper.Replace(Title, "").Replace(" ", "_").ToLower();
+            }
+        }
+
+        public IEnumerable<string> RedirectURLSlug
+        {
+            get
+            {
+                return Redirect.Select(r => SpecialCharacterStripper.Replace(r, "").Replace(" ", "_").ToLower());
             }
         }
 

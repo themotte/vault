@@ -131,24 +131,21 @@ namespace QCUtilities
         public bool CollectionContainsUniqueURLS(List<Post> postCollection, out string errorMSG)
         {
             errorMSG = "";
-            if (postCollection.Count > 0)
-            {
-                var guiltyTitles = (
-                                            from post in postCollection
-                                            group post.Title by post.Title into g
-                                            where g.Count() > 1
-                                            let occurences= g.Count()
-                                            let title=g.Key
-                                            select new { title, occurences}
-                                        )?.ToList();
+            
+            var guiltyTitles = postCollection
+                    .SelectMany(p => p.RedirectURLSlug.Concat(new [] { p.URLSlug }))
+                    .GroupBy(t => t)
+                    .Where(g => g.Count() > 1)
+                    .Select(g => (title: g.Key, count: g.Count()))
+                    .ToList();
 
-                bool duplicateURLSFound = guiltyTitles?.Count() > 0;
-                if (duplicateURLSFound)
-                {
-                    var postResults = JsonConvert.SerializeObject(guiltyTitles).ToString();
-                    errorMSG = $"The xml contains the following duplicate URLS:\n{postResults}";
-                }
+            bool duplicateURLSFound = guiltyTitles.Count() > 0;
+            if (duplicateURLSFound)
+            {
+                var postResults = JsonConvert.SerializeObject(guiltyTitles).ToString();
+                errorMSG = $"The xml contains the following duplicate URLS:\n{postResults}";
             }
+            
             return string.IsNullOrEmpty(errorMSG);
         }
     }

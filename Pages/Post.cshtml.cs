@@ -29,10 +29,22 @@ namespace QCVault.Pages
         public IActionResult OnGet(string title)
         {
             Post = postLoader.Posts.Where(x => x.URLSlug == title).FirstOrDefault();
+
+            if (Post == null)
+            {
+                Post = postLoader.Posts.Where(x => x.RedirectURLSlug.Contains(title)).FirstOrDefault();
+
+                if (Post != null)
+                {
+                    return RedirectPermanent(Post.FullURL);
+                }
+            }
+
             if (Post == null)
             {
                 return NotFound();
             }
+
             return Page();
         }
     }
