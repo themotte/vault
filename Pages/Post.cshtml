@@ -1,5 +1,7 @@
 @page "/post/{title}"
 @model PostModel
+
+@using Microsoft.AspNetCore.Mvc.RazorPages;
 @{
     ViewData["Title"] = Model.Post.Title;
 }
@@ -16,6 +18,15 @@
 
     <div class="body">
         @Html.Raw(Model.Post.BodyCompiled)
+    </div>
+
+    <div>
+        <div class="fb-share-button"
+             @*data-href=@(Microsoft.AspNetCore.Http.Extensions.UriHelper.GetDisplayUrl(Request))*@
+             data-href=@Microsoft.AspNetCore.Http.Extensions.UriHelper.GetDisplayUrl(Request)
+             data-size="large"
+             data-layout="button">
+        </div>
     </div>
 
     <div class="join">
