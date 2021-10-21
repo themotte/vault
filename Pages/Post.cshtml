@@ -21,12 +21,22 @@
     </div>
 
     <div>
-        <div class="fb-share-button"
-             @*data-href=@(Microsoft.AspNetCore.Http.Extensions.UriHelper.GetDisplayUrl(Request))*@
-             data-href=@Microsoft.AspNetCore.Http.Extensions.UriHelper.GetDisplayUrl(Request)
-             data-size="large"
-             data-layout="button">
-        </div>
+        <span class="fb-share-button"
+              @*data-href=@(Microsoft.AspNetCore.Http.Extensions.UriHelper.GetDisplayUrl(Request))*@
+              data-href=@Microsoft.AspNetCore.Http.Extensions.UriHelper.GetDisplayUrl(Request)
+              data-size="large"
+              data-layout="button">
+        </span>
+        <span>
+            <a class="twitter-share-button"
+               href="https://twitter.com/intent/tweet?text=@Model.Post.Title&url=@Microsoft.AspNetCore.Http.Extensions.UriHelper.GetDisplayUrl(Request)"
+               data-size="large">
+                Tweet
+            </a>
+        </span>
+        <span>
+            <a href="https://www.reddit.com/submit?url=@Microsoft.AspNetCore.Http.Extensions.UriHelper.GetDisplayUrl(Request)&title=@Model.Post.Title"><img src="//www.redditstatic.com/spreddit7.gif" alt="submit to reddit" border="0" /> </a>
+        </span>
     </div>
 
     <div class="join">
