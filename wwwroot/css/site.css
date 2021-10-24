@@ -133,7 +133,7 @@ body {
   grid-area: title;
 }
 
-.post-list-element .title h2 {
+.post-list-element .title a {
   font-size: 1.6rem;
   font-weight: 500;
 }
