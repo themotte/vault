@@ -40,8 +40,15 @@ namespace QCUtilities.Entities
 
             public void ReadXml(System.Xml.XmlReader reader)
             {
-                // this is simultaneously easier and more horrible than I was expecting
-                contents = reader.ReadInnerXml();
+                // By default, System.Xml.XmlTextReader ignores pure-whitespace text nodes between tags.
+                // We need these because some people like doing <a href="evidence">stuff</a> <a href="evidence">like</a> <a href="evidence">this</a>.
+                // Without the whitespace, these get smooshed up against each other and it looks like absolute butt.
+                // There's no setting that I can find in XmlSerializer, nor is there a setting in XmlReader.
+                // Thankfully, this XmlReader is *always* an XmlTextReader, which does have a relevant setting, and we can just cast it to XmlTextReader and change the setting at runtime and make it work.
+                // This will obviously break completely if this stops being an XmlTextReader but that's a problem for future me.
+                var treader = reader as System.Xml.XmlTextReader;
+                treader.WhitespaceHandling = System.Xml.WhitespaceHandling.All;
+                contents = treader.ReadInnerXml();
             }
 
             public void WriteXml(System.Xml.XmlWriter writer)

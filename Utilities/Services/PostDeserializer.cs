@@ -109,7 +109,7 @@ namespace QCUtilities
             {
                 using (var rd = XmlReader.Create(file))
                 {
-                    var doc = XDocument.Load(rd);
+                    var doc = XDocument.Load(rd, LoadOptions.PreserveWhitespace);
 
                     doc.Validate(
                         schema, (o, e) =>
