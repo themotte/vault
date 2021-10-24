@@ -11,7 +11,7 @@
                 <img src=@($"https://picsum.photos/seed/{post.URLSlug}/160/100") width="160" height="100" loading="lazy">
             </a>
         </div>
-        <div class="title"><h2><a asp-page="Post" asp-route-title="@post.URLSlug">@post.Title</a></h2></div>
+        <div class="title"><a asp-page="Post" asp-route-title="@post.URLSlug">@post.Title</a></div>
         <div class="metadata">
             <div class="author">@post.Author</div>
             <div class="divider">-</div>
