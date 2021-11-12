@@ -1,4 +1,4 @@
-﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
 
 a.navbar-brand {
@@ -272,7 +272,11 @@ body {
   margin-bottom: 0.1rem;
 }
 
-.post .header .credit {
+.post .header .addendum {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
   margin-bottom: 2rem;
 }
 
@@ -290,8 +294,113 @@ body {
   line-height: 2.2rem;
 }
 
-.post .join {
-    margin: 4rem auto 4rem auto;
-    text-align: center;
-    font-size: 1.6rem;
+.post .cta {
+  margin: 4rem auto 4rem auto;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.post .cta .join {
+  font-size: 1.6rem;
+
+  /*background-color: #224;
+  border-color: #224;
+  color: #fff;*/
+  background-color: #eef;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  margin-bottom: 2rem;
+
+  border-style: solid;
+  border-radius: 5px;
+  border-color: #eef;
+  stroke-width: 4px;
+}
+
+.post .cta .share {
+  font-size: 1.4rem;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.post .cta .share > div {
+  margin: 0 0.5rem 0 0.5rem;
+}
+
+/* Sharing buttons
+-------------------------------------------- */
+
+.resp-sharing-button__link,
+.resp-sharing-button__icon {
+  display: inline-block
+}
+
+.resp-sharing-button__link {
+  text-decoration: none;
+  color: #fff;
+  margin: 0.25em
+}
+
+.resp-sharing-button {
+  border-radius: 5px;
+  transition: 25ms ease-out;
+  padding: 0.25rem 0.5rem;
+  font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+  font-size: 0.75rem;
+}
+
+.resp-sharing-button__icon svg {
+  width: 1em;
+  height: 1em;
+  margin-right: 0.4em;
+  vertical-align: top
+}
+
+.resp-sharing-button--small svg {
+  margin: 0;
+  vertical-align: middle
+}
+
+/* Solid icons get a fill */
+.resp-sharing-button__icon--solid,
+.resp-sharing-button__icon--solidcircle {
+  fill: #fff;
+  stroke: none
+}
+
+.resp-sharing-button--facebook {
+  background-color: #3b5998;
+  border-color: #3b5998;
+}
+
+.resp-sharing-button--facebook:hover,
+.resp-sharing-button--facebook:active {
+  background-color: #2d4373;
+  border-color: #2d4373;
+}
+
+.resp-sharing-button--twitter {
+  background-color: #55acee;
+  border-color: #55acee;
+}
+
+.resp-sharing-button--twitter:hover,
+.resp-sharing-button--twitter:active {
+  background-color: #2795e9;
+  border-color: #2795e9;
+}
+
+.resp-sharing-button--reddit {
+  background-color: #5f99cf;
+  border-color: #5f99cf;
+}
+
+.resp-sharing-button--reddit:hover,
+.resp-sharing-button--reddit:active {
+  background-color: #3a80c1;
+  border-color: #3a80c1;
 }

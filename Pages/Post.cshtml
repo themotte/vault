@@ -7,8 +7,12 @@
 <div class="post">
     <div class="header">
         <h1 class="title">@Model.Post.Title</h1>
-        <div class="credit">
-            <span class="author">@Model.Post.Author</span> - <a class="original" href="https://www.reddit.com/@(Model.Post.Link.Trim('/'))">[original thread]</a>
+        <div class="addendum">
+            <span class="credit"><span class="author">@Model.Post.Author</span> - <a class="original" href="https://www.reddit.com/@(Model.Post.Link.Trim('/'))">[original thread]</a></span>
+
+            <span class="share">
+                <vc:share-widget post="@Model.Post" />
+            </span>
         </div>
 
         <img class="image" src=@($"https://picsum.photos/seed/{Model.Post.URLSlug}/1024/768")>
@@ -18,7 +22,11 @@
         @Html.Raw(Model.Post.BodyCompiled)
     </div>
 
-    <div class="join">
-        <p><a href="https://www.themotte.org">Join the Community</a></p>
+    <div class="cta">
+        <a class="join" href="https://www.themotte.org">Join the Community</a>
+
+        <div class="share">
+            <div>Share</div> <div>-</div> <div class="widgets"><vc:share-widget post="@Model.Post" /></div>
+        </div>
     </div>
 </div>
