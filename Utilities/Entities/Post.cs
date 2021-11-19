@@ -83,19 +83,33 @@ namespace QCUtilities.Entities
             }
         }
 
-        private string bodyExcerpt = null;
-        public string BodyExcerpt
+        private string bodyExcerptText = null;
+        public string BodyExcerptText
         {
             get
             {
-                if (bodyExcerpt == null)
+                if (bodyExcerptText == null)
                 {
-                    bodyExcerpt = QCVault.Utilities.ExcerptGenerator.Generate(Body.contents, 1500);
-
-                    bodyExcerpt += $"<p>Read more at <a href=\"https://www.vault.themotte.org{FullURL}\">The Vault</a></p>";
+                    bodyExcerptText = QCVault.Utilities.TextExcerptGenerator.Generate(Body.contents, 500);
                 }
 
-                return bodyExcerpt;
+                return bodyExcerptHTML;
+            }
+        }
+
+        private string bodyExcerptHTML = null;
+        public string BodyExcerptHTML
+        {
+            get
+            {
+                if (bodyExcerptHTML == null)
+                {
+                    bodyExcerptHTML = QCVault.Utilities.HTMLExcerptGenerator.Generate(Body.contents, 1500);
+
+                    bodyExcerptHTML += $"<p>Read more at <a href=\"https://www.vault.themotte.org{FullURL}\">The Vault</a></p>";
+                }
+
+                return bodyExcerptHTML;
             }
         }
 
@@ -125,7 +139,7 @@ namespace QCUtilities.Entities
         {
             int bytes = 0;
             bytes += BodyCompiled.Length;
-            bytes += BodyExcerpt.Length;
+            bytes += BodyExcerptHTML.Length;
 
             // We don't actually care about the bytes, I just needed an excuse to call the properties.
         }
