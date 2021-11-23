@@ -26,6 +26,10 @@ namespace QCUtilities.Entities
         [XmlArrayItem("li")]
         public List<string> Redirect { get; set; } = new List<string>();
 
+        [XmlArray("category")]
+        [XmlArrayItem("li")]
+        public List<string> Category { get; set; } = new List<string>();
+
         public class VerbatimBlob : IXmlSerializable
         {
             public string contents;

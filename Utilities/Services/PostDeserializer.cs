@@ -48,6 +48,41 @@ namespace QCUtilities
                 Posts.AddRange(postChunk.OrderByDescending(post => post.Date));
             }
 
+            // hardcoded list of authorized categories to help me avoid dumb typos
+            var validCategories = new HashSet<string> { "coteries", "culture", "personal", "knowledge", "economics", "civilization", "moloch", "media", "flux" };
+
+            // used for sorting
+            var categoryCount = new Dictionary<string, int>();
+
+            foreach (var post in Posts)
+            {
+                foreach (var cat in post.Category)
+                {
+                    if (!validCategories.Contains(cat))
+                    {
+                        throw new InvalidDataException($"Invalid category {cat} in {post.Title}");
+                    }
+
+                    if (!categoryCount.ContainsKey(cat))
+                    {
+                        categoryCount[cat] = 1;
+                    }
+                    else
+                    {
+                        categoryCount[cat] = categoryCount[cat] + 1;
+                    }
+                }
+            }
+
+            // order by frequency increasing, so the rarest category is at the front
+            var categories = categoryCount.OrderBy(kvp => kvp.Value).Select(kvp => kvp.Key).ToList();
+
+            // go back through the posts and reorder the categories
+            foreach (var post in Posts)
+            {
+                post.Category = categories.Where(cat => post.Category.Contains(cat)).ToList();
+            }
+
             ValidatePostCollection(collectionValidator, Posts);
 
             foreach (var post in Posts)

@@ -17,12 +17,12 @@
             <div class="divider">-</div>
             <div class="date">@post.Date.ToString("yyyy MMM d")</div>
         </div>
-        @* TODO: introduce tags; this will just hang out here for now
-            <div class="tags">
-                <span class="tag">beef</span>
-                <span class="tag">cows</span>
-                <span class="tag">moo</span>
-            </div> *@
+        <div class="tags">
+            @foreach (var category in post.Category)
+            {
+                <span class="tag tag-@category">@category</span>
+            }
+        </div>
     </div>
     }
 </div>
