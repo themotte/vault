@@ -163,18 +163,50 @@ body {
 }
 
 .post-list-element .tag {
-  background-color: #400;
-  color: #eee;
-
   display: inline-block;
   margin: 4px 2px;
   padding: 3px 10px;
-  min-width: 60px;
 
   border-radius: 40px;
 
   font-size: 0.8rem;
   text-align: center;
+}
+
+.tag-coteries {
+  background-color: #fee;
+}
+
+.tag-culture {
+  background-color: #fef;
+}
+
+.tag-personal {
+  background-color: #fdd;
+}
+
+.tag-knowledge {
+  background-color: #dfd;
+}
+
+.tag-economics {
+  background-color: #eff;
+}
+
+.tag-civilization {
+  background-color: #ffe;
+}
+
+.tag-moloch {
+  background-color: #efe;
+}
+
+.tag-media {
+  background-color: #eef;
+}
+
+.tag-flux {
+  background-color: #eee;
 }
 
 /* smallest size */

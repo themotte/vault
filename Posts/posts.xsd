@@ -7,6 +7,13 @@
 				<xsd:element name="date" type="xsd:dateTime" />
 				<xsd:element name="link" type="xsd:string" />
 				<xsd:element name="title" type="xsd:string" />
+                <xsd:element name="category" minOccurs="0" maxOccurs="1">
+                    <xsd:complexType>
+                        <xsd:sequence>
+                            <xsd:element name="li" type="xsd:string" minOccurs="1" maxOccurs="unbounded" />
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
                 <xsd:element name="redirect" minOccurs="0" maxOccurs="1">
                     <xsd:complexType>
                         <xsd:sequence>
