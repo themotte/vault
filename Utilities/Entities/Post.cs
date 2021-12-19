@@ -135,7 +135,7 @@ namespace QCUtilities.Entities
             get => "/post/" + URLSlug;
         }
 
-        public void RegenerateCachedData()
+        public void GenerateCachedData()
         {
             int bytes = 0;
             bytes += BodyCompiled.Length;
