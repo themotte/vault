@@ -4,6 +4,14 @@
     ViewData["Title"] = Model.Post.Title;
 }
 
+@section head
+{
+<meta property="og:title" content="@Model.Post.Title" />
+<meta property="og:description" content="@Model.Post.BodyExcerptText" />
+<meta property="og:image" content="https://picsum.photos/seed/{Model.Post.URLSlug}/1200/630" />
+<meta property="og:type" content="article" />
+}
+
 <div class="post">
     <div class="header">
         <h1 class="title">@Model.Post.Title</h1>

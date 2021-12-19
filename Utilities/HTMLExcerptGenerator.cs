@@ -8,14 +8,14 @@ using HtmlAgilityPack;
 
 namespace QCVault.Utilities
 {
-    public static class ExcerptGenerator
+    public static class HTMLExcerptGenerator
     {
-        public static IEnumerable<HtmlNode> Descendants(this HtmlNode root)
+        private static IEnumerable<HtmlNode> Descendants(this HtmlNode root)
         {
             return new[] { root }.Concat(root.ChildNodes.SelectMany(child => child.Descendants()));
         }
 
-        public static IEnumerable<HtmlNode> TextDescendants(this HtmlNode root)
+        private static IEnumerable<HtmlNode> TextDescendants(this HtmlNode root)
         {
             return root.Descendants().Where(n => n.NodeType == HtmlNodeType.Text && !String.IsNullOrWhiteSpace(n.InnerText));
         }
