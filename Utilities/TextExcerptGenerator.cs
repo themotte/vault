@@ -8,6 +8,7 @@ using HtmlAgilityPack;
 
 namespace QCVault.Utilities
 {
+    // Generate an excerpt suitable for text output. Strips blockquotes, removes HTML tags, and truncates to a given length.
     public static class TextExcerptGenerator
     {
         private static IEnumerable<HtmlNode> Descendants(this HtmlNode root)
