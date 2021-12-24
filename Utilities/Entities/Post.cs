@@ -97,7 +97,7 @@ namespace QCUtilities.Entities
                     bodyExcerptText = QCVault.Utilities.TextExcerptGenerator.Generate(Body.contents, 500);
                 }
 
-                return bodyExcerptHTML;
+                return bodyExcerptText;
             }
         }
 
