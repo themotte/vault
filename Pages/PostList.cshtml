@@ -9,27 +9,7 @@
 }
 
 <div class="post-list">
-    @foreach (var post in Model.Posts)
-    {
-    <div class="post-list-element">
-        <div class="thumbnail">
-            <a asp-page="Post" asp-route-title="@post.URLSlug">
-                @* This is just a temporary image placeholder until we have images *@
-                <img src=@($"https://picsum.photos/seed/{post.URLSlug}/160/100") width="160" height="100" loading="lazy">
-            </a>
-        </div>
-        <div class="title"><a asp-page="Post" asp-route-title="@post.URLSlug">@post.Title</a></div>
-        <div class="metadata">
-            <div class="author">@post.Author</div>
-            <div class="divider">-</div>
-            <div class="date">@post.Date.ToString("yyyy MMM d")</div>
-        </div>
-        <div class="tags">
-            @foreach (var category in post.Category)
-            {
-                <span class="tag tag-@category">@category</span>
-            }
-        </div>
-    </div>
-    }
+	@foreach (var post in Model.Posts) {
+		@await Component.InvokeAsync("Post", post)
+	}
 </div>

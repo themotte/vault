@@ -1,0 +1,41 @@
+@model QCUtilities.Entities.Post
+
+@{
+	ViewData["Title"] = Model.Title;
+}
+
+@section head
+{
+<meta property="og:title" content="@Model.Title" />
+<meta property="og:description" content="@Model.BodyExcerptText" />
+<meta property="og:image" content="https://picsum.photos/seed/{Model.Post.URLSlug}/1200/630" />
+<meta property="og:type" content="article" />
+}
+
+
+<div class="post">
+	<div class="header">
+		<h1 class="title">@Model.Title</h1>
+		<div class="addendum">
+			<span class="credit"><span class="author">@Model.Author</span> - <a class="original" href="https://www.reddit.com/@(Model.Link.Trim('/'))">[original thread]</a></span>
+
+			<span class="share">
+				<vc:share-widget post="@Model" />
+			</span>
+		</div>
+
+		<img class="image" src=@($"https://picsum.photos/seed/{Model.URLSlug}/1024/768")>
+	</div>
+
+	<div class="body">
+		@Html.Raw(Model.BodyCompiled)
+	</div>
+
+	<div class="cta">
+		<a class="join" href="https://www.themotte.org">Join the Community</a>
+
+		<div class="share">
+			<div>Share</div> <div>-</div> <div class="widgets">@await Component.InvokeAsync("ShareWidget", Model)</div>
+		</div>
+	</div>
+</div>
