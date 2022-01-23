@@ -1,0 +1,7 @@
+@model IEnumerable<QCUtilities.Entities.Post>
+
+<div class="post-list">
+	@foreach (var post in Model) {
+		@await Component.InvokeAsync("Post", post)
+	}
+</div>
