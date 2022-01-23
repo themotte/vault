@@ -19,15 +19,22 @@ namespace QCVault.Pages
 
         public List<Post> Posts { get; set; }
 
+
         public PostListModel(ILogger<PageModel> logger, IPostLoader postLoader)
         {
             this.logger = logger;
             this.postLoader = postLoader;
         }
 
-        public IActionResult OnGet(int? pageNumber)
+        public IActionResult OnGet(int? pageNumber, string? category)
         {
             Posts = postLoader.Posts;
+
+            if (!string.IsNullOrEmpty(category))
+            {
+                Posts = Posts.Where(p => p.Category.Contains(category, StringComparer.OrdinalIgnoreCase)).ToList();
+            }
+
             return Page();
         }
     }
