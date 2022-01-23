@@ -26,13 +26,17 @@ namespace QCVault.Pages
             this.postLoader = postLoader;
         }
 
-        public IActionResult OnGet(int? pageNumber, string? category)
+        public IActionResult OnGet(int? pageNumber, string category)
         {
             Posts = postLoader.Posts;
 
             if (!string.IsNullOrEmpty(category))
             {
                 Posts = Posts.Where(p => p.Category.Contains(category, StringComparer.OrdinalIgnoreCase)).ToList();
+                if (Posts.Count <= 0)
+                {
+                    return NotFound();
+                }
             }
 
             return Page();
