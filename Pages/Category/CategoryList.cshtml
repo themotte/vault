@@ -1,0 +1,13 @@
+@page "/category"
+@model QCVault.Pages.Category.CategoryListModel
+
+@section head
+{
+<meta property="og:title" content="The Motte Vault" />
+<meta property="og:description" content="The purpose of this community is to be a working discussion ground for people who may hold dramatically different beliefs. It is to be a place for people to examine the beliefs of others as well as their own beliefs; it is to be a place where strange or abnormal opinions and ideas can be generated and discussed fairly, with consideration and insight instead of kneejerk responses." />
+<meta property="og:image" content="https://picsum.photos/seed/frontpage/1200/630" />
+}
+
+@foreach (var category in Model.ValidCategories) {
+	<p class="tag tag-@category"><a asp-page="/Category/SelectedCategory" asp-route-categoryName="@category">@category</a></p>
+}
