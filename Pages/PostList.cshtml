@@ -8,8 +8,6 @@
 <meta property="og:image" content="https://picsum.photos/seed/frontpage/1200/630" />
 }
 
-<div class="post-list">
-	@foreach (var post in Model.Posts) {
-		@await Component.InvokeAsync("Post", post)
-	}
-</div>
+
+@await Component.InvokeAsync("PostList", Model.Posts)
+
