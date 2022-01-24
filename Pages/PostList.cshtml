@@ -10,6 +10,6 @@
 
 <div class="post-list">
 	@foreach (var post in Model.Posts) {
-		@await Component.InvokeAsync("Post", post)
+		<vc:post post="post" />
 	}
 </div>
