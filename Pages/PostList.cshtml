@@ -8,8 +8,6 @@
 <meta property="og:image" content="https://picsum.photos/seed/frontpage/1200/630" />
 }
 
-<div class="post-list">
-	@foreach (var post in Model.Posts) {
-		<vc:post post="post" />
-	}
-</div>
+
+<vc:post-list post-List="Model.Posts" />
+
