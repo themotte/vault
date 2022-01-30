@@ -19,7 +19,6 @@ namespace QCVault.Pages
 
         public List<Post> Posts { get; set; }
 
-
         public PostListModel(ILogger<PageModel> logger, IPostLoader postLoader)
         {
             this.logger = logger;
