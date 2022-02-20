@@ -9,5 +9,5 @@
 }
 
 @foreach (var category in Model.ValidCategories) {
-	<p class="tag tag-@category"><a asp-page="SelectedCategory" asp-route-categoryName="@category">@category</a></p>
+	<p class="tag tag-@category"><a asp-page="/Category/SelectedCategory" asp-route-categoryName="@category">@category</a></p>
 }
