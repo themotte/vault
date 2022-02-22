@@ -2,12 +2,12 @@
 
 <div class="post-list-element">
 	<div class="thumbnail">
-		<a asp-page="Post" asp-route-title="@Model.URLSlug">
+		<a asp-page="/Post" asp-route-title="@Model.URLSlug">
 			@* This is just a temporary image placeholder until we have images *@
 			<img src=@($"https://picsum.photos/seed/{Model.URLSlug}/160/100") width="160" height="100" loading="lazy">
 		</a>
 	</div>
-	<div class="title"><a asp-page="Post" asp-route-title="@Model.URLSlug">@Model.Title</a></div>
+	<div class="title"><a asp-page="/Post" asp-route-title="@Model.URLSlug">@Model.Title</a></div>
 	<div class="metadata">
 		<div class="author">@Model.Author</div>
 		<div class="divider">-</div>
@@ -15,7 +15,7 @@
 	</div>
 	<div class="tags">
 		@foreach (var category in Model.Category) {
-			<span class="tag tag-@category">@category</span>
+			<span class="tag tag-@category"><a asp-page="/Category/SelectedCategory" asp-route-categoryName="@category">@category</a></span>
 		}
 	</div>
 </div>
