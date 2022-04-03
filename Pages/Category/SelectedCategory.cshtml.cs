@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using QCUtilities.Entities;
 using QCUtilities.Interfaces;
+using QCUtilities;
 
 namespace QCVault.Pages.Category
 {
@@ -14,6 +15,9 @@ namespace QCVault.Pages.Category
 
         private readonly ILogger<PageModel> logger;
         private readonly IPostLoader postLoader;
+
+        public string CategoryName;
+        public string CategoryText;
 
         public List<Post> Posts { get; set; }
 
@@ -34,6 +38,13 @@ namespace QCVault.Pages.Category
                 {
                     return NotFound();
                 }
+            }
+
+            CategoryName = categoryName.Capitalize();
+
+            if (!Utilities.Constants.Categories.TryGetValue(categoryName, out CategoryText))
+            {
+                CategoryText = "";
             }
 
             return Page();
