@@ -48,6 +48,8 @@ namespace QCUtilities
                 Posts.AddRange(postChunk.OrderByDescending(post => post.Date));
             }
 
+            Console.WriteLine($"Loaded {Posts.Count} posts");
+
             // hardcoded list of authorized categories to help me avoid dumb typos
             var validCategories = new HashSet<string> { "coteries", "culture", "personal", "knowledge", "economics", "civilization", "moloch", "media", "flux" };
 
