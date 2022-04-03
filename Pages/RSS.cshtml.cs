@@ -24,7 +24,7 @@ namespace QCVault.Pages
         public IActionResult OnGet()
         {
             var items = new List<SyndicationItem>();
-            foreach (var item in postLoader.Posts)
+            foreach (var item in postLoader.VisiblePosts())
             {
                 var postUrl = "https://www.vault.themotte.org" + item.FullURL;
                 var title = item.Title;

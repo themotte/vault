@@ -15,7 +15,11 @@ namespace QCUtilities
 {
     public class PostDeserializer : IPostLoader
     {
-        public List<Post> Posts { get; }
+        private List<Post> Posts { get; }
+        public IEnumerable<Post> VisiblePosts()
+        {
+            return Posts.Where(post => post.Date <= DateTime.Now + TimeSpan.FromDays(1));
+        }
 
         public PostDeserializer(IDiskArchiveValidator validator, IPostCollectionValidator collectionValidator, string path, string xsd)
         {
@@ -23,8 +27,8 @@ namespace QCUtilities
 
             Posts = new List<Post>();
 
-            // Hacky approach to priority blocks
-            foreach (var extension in new string[] { "p1", "p2", "p3" })
+            // Load our main posts first
+            foreach (var extension in new string[] { "main" })
             {
                 var fullPath = Path.Combine(path, extension);
                 if (!Directory.Exists(fullPath))
@@ -45,8 +49,35 @@ namespace QCUtilities
                 }
 
                 // We want posts to be shown in chronological order, newest-to-oldest, so we just do this here because it's silly to redo it every time we reload.
-                Posts.AddRange(postChunk.OrderByDescending(post => post.Date));
+                Posts.AddRange(postChunk);
             }
+
+            // Now load all our timed posts
+            string timedFilename = Path.Combine(path, "timed.xml");
+            if (File.Exists(timedFilename))
+            {
+                var doc = XDocument.Load(timedFilename);
+
+                foreach (var elem in doc.Root.Elements())
+                {
+                    var time = elem.Attribute("time").Value;
+                    var fname = elem.Value;
+
+                    var ser = new XmlSerializer(typeof(Post));
+                    using (Stream reader = new FileStream(Path.Combine(path, fname), FileMode.Open))
+                    {
+                        var post = (Post)ser.Deserialize(reader);
+                        post.Date = DateTime.Parse(time);
+
+                        Posts.Add(post);
+                    }
+                }
+            }
+
+            Console.WriteLine($"Loaded {Posts.Count} posts");
+
+            // We want posts to be shown in chronological order, newest-to-oldest, so we just do this here because it's silly to redo it every time we reload.
+            Posts = Posts.OrderByDescending(post => post.Date).ToList();
 
             // used for sorting
             var categoryCount = new Dictionary<string, int>();
@@ -139,6 +170,13 @@ namespace QCUtilities
 
             foreach (var file in Directory.GetFiles(path))
             {
+                if (file.EndsWith("timed.xml"))
+                {
+                    continue;
+                }
+
+                Console.WriteLine(file);
+
                 using (var rd = XmlReader.Create(file))
                 {
                     var doc = XDocument.Load(rd, LoadOptions.PreserveWhitespace);

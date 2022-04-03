@@ -89,7 +89,7 @@ namespace QCVault.Tests
 
             var posts = XMLDeserIntTestHelper.CreateTestCollection();
             var deser = DeserializerFactory.Create();
-            var result = deser.Posts;
+            var result = deser.VisiblePosts();
             Assert.That(posts.SequenceEqual(result));
         }
 

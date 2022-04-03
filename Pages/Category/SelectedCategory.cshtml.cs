@@ -19,7 +19,7 @@ namespace QCVault.Pages.Category
         public string CategoryName;
         public string CategoryText;
 
-        public List<Post> Posts { get; set; }
+        public IEnumerable<Post> Posts { get; set; }
 
         public SelectedCategoryModel(ILogger<PageModel> logger, IPostLoader postLoader)
         {
@@ -29,7 +29,7 @@ namespace QCVault.Pages.Category
 
         public IActionResult OnGet(int? pageNumber, string categoryName)
         {
-            Posts = postLoader.Posts;
+            Posts = postLoader.VisiblePosts();
 
             if (!string.IsNullOrEmpty(categoryName))
             {

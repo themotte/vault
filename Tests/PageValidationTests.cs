@@ -40,7 +40,7 @@ namespace QCVault.Tests
             
             var des = TestUtil.CreateDeserializer();
 
-            var posts = des.Posts;
+            var posts = des.VisiblePosts();
             foreach (var post in posts)
             {
                 var response = await client.GetAsync(post.FullURL);

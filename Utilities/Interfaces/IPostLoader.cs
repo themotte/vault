@@ -7,6 +7,6 @@ namespace QCUtilities.Interfaces
 {
     public interface IPostLoader
     {
-        public List<Post> Posts { get; }
+        public IEnumerable<Post> VisiblePosts();
     }
 }
