@@ -100,8 +100,12 @@ body {
   color: #333;
 }
 
-.post-list a:link, .post-list a:visited {
+.post-list a:link {
   color: #333;
+}
+
+.post-list a:visited {
+  color: #555;
 }
 
 .post-list a:hover {
@@ -208,6 +212,68 @@ body {
 .tag-flux {
   background-color: #eee;
 }
+
+/* CategoryList layout
+-------------------------------------------------- */
+
+.category-list {
+  max-width: 800px;
+  margin: auto;
+}
+
+.category-list .category {
+  margin: 2rem;
+  padding: 2rem;
+
+  border-radius: 1rem;
+}
+
+.category-list .category-title {
+  margin-top: 0;
+}
+
+.category-list a:link {
+  color: #333;
+}
+
+.category-list a:visited {
+  color: #555;
+}
+
+.category-list a:hover {
+  color: #338;
+  text-decoration: none;
+}
+
+.category-list a:hover .category-title {
+  text-decoration: underline;
+}
+
+
+/* SelectedCategory layout
+-------------------------------------------------- */
+
+.category-title {
+  font-size: 2rem;
+  text-align: center;
+}
+
+main > .category-title {
+  margin: 2rem;
+  margin-top: 4rem;
+}
+
+.category-text {
+  font-family: Spectral, serif, "Segoe UI", sans-serif;
+  font-size: 1.2rem;
+  line-height: 2.2rem;
+
+  margin: auto;
+  max-width: 750px;
+}
+
+/* Main article size-adjusting layout
+-------------------------------------------------- */
 
 /* smallest size */
 @media (min-width: 0px) {

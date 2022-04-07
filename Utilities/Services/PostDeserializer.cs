@@ -48,9 +48,6 @@ namespace QCUtilities
                 Posts.AddRange(postChunk.OrderByDescending(post => post.Date));
             }
 
-            // hardcoded list of authorized categories to help me avoid dumb typos
-            var validCategories = new HashSet<string> { "coteries", "culture", "personal", "knowledge", "economics", "civilization", "moloch", "media", "flux" };
-
             // used for sorting
             var categoryCount = new Dictionary<string, int>();
 
@@ -58,7 +55,7 @@ namespace QCUtilities
             {
                 foreach (var cat in post.Category)
                 {
-                    if (!validCategories.Contains(cat))
+                    if (!QCVault.Utilities.Constants.Categories.ContainsKey(cat))
                     {
                         throw new InvalidDataException($"Invalid category {cat} in {post.Title}");
                     }
