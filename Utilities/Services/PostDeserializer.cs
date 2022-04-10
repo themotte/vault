@@ -60,7 +60,7 @@ namespace QCUtilities
             {
                 foreach (var cat in post.Category)
                 {
-                    if (!validCategories.Contains(cat))
+                    if (!QCVault.Utilities.Constants.Categories.ContainsKey(cat))
                     {
                         throw new InvalidDataException($"Invalid category {cat} in {post.Title}");
                     }

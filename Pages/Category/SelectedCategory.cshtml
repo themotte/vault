@@ -1,12 +1,22 @@
 @page "/category/{categoryName}"
 @model QCVault.Pages.Category.SelectedCategoryModel
+@{
+    ViewData["Title"] = Model.CategoryName;
+}
 
 @section head
 {
-<meta property="og:title" content="The Motte Vault" />
-<meta property="og:description" content="The purpose of this community is to be a working discussion ground for people who may hold dramatically different beliefs. It is to be a place for people to examine the beliefs of others as well as their own beliefs; it is to be a place where strange or abnormal opinions and ideas can be generated and discussed fairly, with consideration and insight instead of kneejerk responses." />
-<meta property="og:image" content="https://picsum.photos/seed/frontpage/1200/630" />
+    <meta property="og:title" content="The Motte Vault - @Model.CategoryName" />
+    <meta property="og:description" content="@Model.CategoryText" />
+    <meta property="og:image" content="https://picsum.photos/seed/@Model.CategoryName/1200/630" />
 }
 
+<h1 class="category-title">
+    @Model.CategoryName
+</h1>
+
+<p class="category-text">
+    @Model.CategoryText
+</p>
 
 <vc:post-list post-List="Model.Posts" />
