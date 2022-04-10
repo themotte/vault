@@ -17,7 +17,7 @@ namespace QCVault.Pages
         private readonly ILogger<PageModel> logger;
         private readonly IPostLoader postLoader;
 
-        public List<Post> Posts { get; set; }
+        public IEnumerable<Post> Posts { get; set; }
 
         public PostListModel(ILogger<PageModel> logger, IPostLoader postLoader)
         {
@@ -27,7 +27,7 @@ namespace QCVault.Pages
 
         public IActionResult OnGet(int? pageNumber)
         {
-            Posts = postLoader.Posts;
+            Posts = postLoader.VisiblePosts();
             return Page();
         }
     }

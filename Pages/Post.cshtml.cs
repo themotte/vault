@@ -28,11 +28,13 @@ namespace QCVault.Pages
 
         public IActionResult OnGet(string title)
         {
-            Post = postLoader.Posts.Where(x => x.URLSlug == title).FirstOrDefault();
+            // this is kind of slow and someday should be made less slow
+
+            Post = postLoader.VisiblePosts().Where(x => x.URLSlug == title).FirstOrDefault();
 
             if (Post == null)
             {
-                Post = postLoader.Posts.Where(x => x.RedirectURLSlug.Contains(title)).FirstOrDefault();
+                Post = postLoader.VisiblePosts().Where(x => x.RedirectURLSlug.Contains(title)).FirstOrDefault();
 
                 if (Post != null)
                 {

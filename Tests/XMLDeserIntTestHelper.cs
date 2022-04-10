@@ -101,11 +101,11 @@ namespace QCVault.Tests
         private static void CreateXMLFromCollection(List<Post> posts)
         {
             Directory.CreateDirectory(ValidXMLPath);
-            Directory.CreateDirectory(Path.Combine(ValidXMLPath, "p2"));
+            Directory.CreateDirectory(Path.Combine(ValidXMLPath, "main"));
 
             foreach (var post in posts)
             {
-                using (var writer = XmlWriter.Create($"{ValidXMLPath}/p2/{post.Author}-{post.Date.ToString("yyyyMMddHHmmss")}.xml"))
+                using (var writer = XmlWriter.Create($"{ValidXMLPath}/main/{post.Author}-{post.Date.ToString("yyyyMMddHHmmss")}.xml"))
                 {
                     var ser = new XmlSerializer(typeof(Post));
                     ser.Serialize(writer, post);

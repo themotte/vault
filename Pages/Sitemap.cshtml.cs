@@ -32,7 +32,7 @@ namespace QCVault.Pages
             string baseUrl = "https://www.vault.themotte.org";
 
             // get a list of published posts
-            var posts = postLoader.Posts;
+            var posts = postLoader.VisiblePosts();
             
             var siteMapBuilder = new SitemapBuilder();
 
