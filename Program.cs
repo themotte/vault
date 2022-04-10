@@ -13,6 +13,20 @@ namespace QCVault
     {
         public static void Main(string[] args)
         {
+            if (args.Contains("--test"))
+            {
+                Console.WriteLine("Testing begin . . .");
+
+                // All we really want to do here is load all the posts, then exit
+                string xmlPath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Posts", "posts");
+                string xsd = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Posts", "posts.xsd");
+                new QCUtilities.PostDeserializer(new QCUtilities.DiskArchiveValidator(), new QCUtilities.CollectionValidator(), xmlPath, xsd);
+
+                Console.WriteLine("Testing complete!");
+
+                return;
+            }
+
             CreateHostBuilder(args).Build().Run();
         }
 
