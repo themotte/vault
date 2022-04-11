@@ -63,7 +63,7 @@ namespace QCVault.Tests
             Directory.CreateDirectory(invalidFilePath);
         }
 
-        private void LoadXSDFile()
+        public static void LoadXSDFile()
         {
             var pathFrom = Path.Combine(XMLDeserIntTestHelper.SchemaFolder, XMLDeserIntTestHelper.SCHEMA);
             var pathTo = Path.Combine(XMLDeserIntTestHelper.IntDestDir, XMLDeserIntTestHelper.SCHEMA);
@@ -100,26 +100,6 @@ namespace QCVault.Tests
         {
             var val = new DiskArchiveValidator();
             var result = val.AFileExists(Path.Combine(XMLDeserIntTestHelper.IntDestDir, XMLDeserIntTestHelper.VALIDXML));
-            Assert.IsTrue(result);
-        }
-
-        [Test]
-        public void FilesValid_ReturnsFalse()
-        {
-            var val = new DiskArchiveValidator();
-            var xmlPath = Path.Combine(XMLDeserIntTestHelper.IntDestDir, XMLDeserIntTestHelper.INVALIDXML);
-            var schemaPath = Path.Combine(XMLDeserIntTestHelper.IntDestDir, XMLDeserIntTestHelper.SCHEMA);
-            var result = val.FilesValid(xmlPath, schemaPath);
-            Assert.IsFalse(result);
-        }
-
-        [Test]
-        public void FilesValid_ReturnsTrue()
-        {
-            var val = new DiskArchiveValidator();
-            var xmlPath = Path.Combine(XMLDeserIntTestHelper.IntDestDir, XMLDeserIntTestHelper.VALIDXML);
-            var schemaPath = Path.Combine(XMLDeserIntTestHelper.IntDestDir, XMLDeserIntTestHelper.SCHEMA);
-            var result = val.FilesValid(xmlPath, schemaPath);
             Assert.IsTrue(result);
         }
     }
