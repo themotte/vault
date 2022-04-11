@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
 <Post xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <note>cat cat cat</note>
   <author>Max</author>
   <date>2020-01-07T04:51:57Z</date>
   <link>/r/TheMotte/comments/bqrb5q/culture_war_roundup_for_the_week_of_may_20_2019/</link>
