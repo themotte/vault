@@ -10,8 +10,6 @@ namespace QCUtilities.Interfaces
         public bool DirectoryExists(string path);
 
         public bool AFileExists(string path);
-
-        public bool FilesValid(string path, string xsd);
     }
 
     public interface IPostCollectionValidator

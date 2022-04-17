@@ -50,9 +50,14 @@ namespace QCUtilities.Entities
                 // There's no setting that I can find in XmlSerializer, nor is there a setting in XmlReader.
                 // Thankfully, this XmlReader is *always* an XmlTextReader, which does have a relevant setting, and we can just cast it to XmlTextReader and change the setting at runtime and make it work.
                 // This will obviously break completely if this stops being an XmlTextReader but that's a problem for future me.
-                var treader = reader as System.Xml.XmlTextReader;
+                /*var treader = reader as System.Xml.XmlTextReader;
                 treader.WhitespaceHandling = System.Xml.WhitespaceHandling.All;
-                contents = treader.ReadInnerXml();
+                contents = treader.ReadInnerXml();*/
+
+                // It stopped being an XmlTestReader. Now it's something validating.
+                // This seems to have the right settings by default?
+                // Keep an eye on this; the AdjacentLink test should be doing something reasonable.
+                contents = reader.ReadInnerXml();
             }
 
             public void WriteXml(System.Xml.XmlWriter writer)
