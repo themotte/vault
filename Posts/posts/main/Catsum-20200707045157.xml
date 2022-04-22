@@ -13,5 +13,5 @@
     more context
   </context>
   <body><p>
-    <a href="http://www.google.com">Nam</a> <a href="http://www.google.com">quis</a> <a href="http://www.google.com">tortor</a> <a href="http://www.google.com">semper</a>, pulvinar ex eget, porta massa. Aliquam ut elementum eros. Pellentesque finibus lacinia diam quis congue. Vestibulum gravida eget nibh eu aliquam. Donec at dolor egestas, mollis metus vel, sagittis magna. Vestibulum placerat lacus rutrum, lacinia sapien non, efficitur turpis. Curabitur non molestie nulla.</p></body>
+    <a href="http://www.google.com">Nam</a> <a href="http://www.google.com">quis</a> <a href="http://www.google.com">tortor</a> <a href="http://www.google.com">semper</a>, <span class="spoiler">pulvinar ex eget</span>, porta massa. Aliquam ut elementum eros. Pellentesque finibus lacinia diam quis congue. Vestibulum gravida eget nibh eu aliquam. Donec at dolor egestas, mollis metus vel, sagittis magna. Vestibulum placerat lacus rutrum, lacinia sapien non, efficitur turpis. Curabitur non molestie nulla.</p></body>
 </Post>
