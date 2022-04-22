@@ -23,6 +23,8 @@ namespace QCUtilities
 
         private Post ReadPost(string filename, XmlSchemaSet schemas)
         {
+            Console.WriteLine($"Reading {filename} . . .");
+
             var settings = new XmlReaderSettings
             {
                 Schemas = schemas,
