@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified">
-	<xsd:element name="Post">
-		<xsd:complexType>
-			<xsd:sequence>
+    <xsd:element name="Post">
+        <xsd:complexType>
+            <xsd:sequence>
                 <xsd:element name="note" minOccurs="0" maxOccurs="1">
                     <xsd:complexType mixed="true">
                         <xsd:sequence>
@@ -10,10 +10,10 @@
                         </xsd:sequence>
                     </xsd:complexType>
                 </xsd:element>
-				<xsd:element name="author" type="xsd:string" />
-				<xsd:element name="date" type="xsd:dateTime" />
-				<xsd:element name="link" type="xsd:string" />
-				<xsd:element name="title" type="xsd:string" />
+                <xsd:element name="author" type="xsd:string" />
+                <xsd:element name="date" type="xsd:dateTime" />
+                <xsd:element name="link" type="xsd:string" />
+                <xsd:element name="title" type="xsd:string" />
                 <xsd:element name="category" minOccurs="0" maxOccurs="1">
                     <xsd:complexType>
                         <xsd:sequence>
@@ -28,21 +28,21 @@
                         </xsd:sequence>
                     </xsd:complexType>
                 </xsd:element>
-				<xsd:element name="context" minOccurs="0" maxOccurs="1">
-					<xsd:complexType mixed="true">
-						<xsd:sequence>
-							<xsd:any minOccurs="0" maxOccurs="unbounded" processContents="skip" />
-						</xsd:sequence>
-					</xsd:complexType>
-				</xsd:element>
-				<xsd:element name="body">
-					<xsd:complexType mixed="true">
-						<xsd:sequence>
-							<xsd:any minOccurs="0" maxOccurs="unbounded" processContents="skip" />
-						</xsd:sequence>
-					</xsd:complexType>
-				</xsd:element>
-			</xsd:sequence>
-		</xsd:complexType>
-	</xsd:element>
+                <xsd:element name="context" minOccurs="0" maxOccurs="1">
+                    <xsd:complexType mixed="true">
+                        <xsd:sequence>
+                            <xsd:any minOccurs="0" maxOccurs="unbounded" processContents="skip" />
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+                <xsd:element name="body">
+                    <xsd:complexType mixed="true">
+                        <xsd:sequence>
+                            <xsd:any minOccurs="0" maxOccurs="unbounded" processContents="skip" />
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
 </xs:schema>
