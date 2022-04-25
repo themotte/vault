@@ -29,7 +29,11 @@ namespace QCVault.Pages
                 var postUrl = "https://www.vault.themotte.org" + item.FullURL;
                 var title = item.Title;
                 var description = item.BodyExcerptHTML;
-                items.Add(new SyndicationItem(title, description, new Uri(postUrl), item.URLSlug, item.Date));
+
+                var synItem = new SyndicationItem(title, description, new Uri(postUrl));
+                synItem.Id = item.URLSlug;
+                synItem.PublishDate = item.Date;
+                items.Add(synItem);
             }
 
             var feed = new SyndicationFeed("Motte Quality Contributions", "The best from The Motte", new Uri("https://www.vault.themotte.org/rss"), "RSSUrl", DateTime.Now)
