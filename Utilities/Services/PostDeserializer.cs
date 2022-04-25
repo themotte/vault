@@ -18,7 +18,7 @@ namespace QCUtilities
         private List<Post> Posts { get; }
         public IEnumerable<Post> VisiblePosts()
         {
-            return Posts.Where(post => post.Date <= DateTimeOffset.Now + TimeSpan.FromDays(1));
+            return Posts.Where(post => post.Date <= DateTimeOffset.Now);
         }
 
         private Post ReadPost(string filename, XmlSchemaSet schemas)
