@@ -18,7 +18,7 @@ namespace QCVault.Utilities.Services
             urls = new List<SitemapUrl>();
         }
 
-        public void AddUrl(string url, DateTime? modified = null, ChangeFrequency? changeFrequency = null, double? priority = null)
+        public void AddUrl(string url, DateTimeOffset? modified = null, ChangeFrequency? changeFrequency = null, double? priority = null)
         {
             urls.Add(new SitemapUrl()
             {

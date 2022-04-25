@@ -33,7 +33,7 @@ namespace QCVault.Tests
             var post1 = new Post()
             {
                 Author = "questionMark",
-                Date = DateTime.Parse("2020-06-29T23:32:56+00:00"),
+                Date = DateTimeOffset.Parse("2020-06-29T23:32:56+00:00"),
                 Link = "https://www.reddit.com/r/TheMotte/comments/hhtwxi/culture_war_roundup_for_the_week_of_june_29_2020/fwf5vss/?context=3&amp;sort=best",
                 Title = "The Role of Energy and Entropy in Cultural Conflict",
                 Body = new Post.VerbatimBlob("nice test 2 have a line too"),
@@ -41,7 +41,7 @@ namespace QCVault.Tests
             var post2 = new Post()
             {
                 Author = "Cheezemansam",
-                Date = DateTime.Parse("2020-06-29T05:17:08+00:00"),
+                Date = DateTimeOffset.Parse("2020-06-29T05:17:08+00:00"),
                 Link = "https://www.reddit.com/r/TheMotte/comments/hhtwxi/culture_war_roundup_for_the_week_of_june_29_2020/fwe75qg/?context=3&amp;sort=best",
                 Title = "The Role of Precedent in the Supreme Court",
                 Body = new Post.VerbatimBlob("nice test"),
@@ -55,7 +55,7 @@ namespace QCVault.Tests
                 var post3 = new Post()
                 {
                     Author = "questionMark",
-                    Date = DateTime.Parse("2020-06-28T23:32:56+00:00"),
+                    Date = DateTimeOffset.Parse("2020-06-28T23:32:56+00:00"),
                     Link = "https://www.reddit.com/r/TheMotte/comments/hhtwxi/culture_war_roundup_for_the_week_of_june_29_2020/fwf5vss/?context=3&amp;sort=best",
                     Title = "The Role of Energy and Entropy in Cultural Conflict",
                     Body = new Post.VerbatimBlob("nice test 2 have a line too"),
@@ -63,7 +63,7 @@ namespace QCVault.Tests
                 var post4 = new Post()
                 {
                     Author = "Cheezemansam",
-                    Date = DateTime.Parse("2020-06-28T05:17:08+00:00"),
+                    Date = DateTimeOffset.Parse("2020-06-28T05:17:08+00:00"),
                     Link = "https://www.reddit.com/r/TheMotte/comments/hhtwxi/culture_war_roundup_for_the_week_of_june_29_2020/fwe75qg/?context=3&amp;sort=best",
                     Title = "The Role of Precedent in the Supreme Court",
                     Body = new Post.VerbatimBlob("nice test"),
