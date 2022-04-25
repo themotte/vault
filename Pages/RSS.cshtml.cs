@@ -36,9 +36,9 @@ namespace QCVault.Pages
                 items.Add(synItem);
             }
 
-            var feed = new SyndicationFeed("Motte Quality Contributions", "The best from The Motte", new Uri("https://www.vault.themotte.org/rss"), "RSSUrl", DateTime.Now)
+            var feed = new SyndicationFeed("Motte Quality Contributions", "The best from The Motte", new Uri("https://www.vault.themotte.org/rss"), "RSSUrl", DateTimeOffset.Now)
             {
-                Copyright = new TextSyndicationContent($"{DateTime.Now.Year} Motte Quality Vault"),
+                Copyright = new TextSyndicationContent($"{DateTimeOffset.Now.Year} Motte Quality Vault"),
                 Items = items,
             };
             var settings = new XmlWriterSettings
