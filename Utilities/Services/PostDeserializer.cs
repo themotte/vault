@@ -86,7 +86,7 @@ namespace QCUtilities
                     var fname = elem.Value;
 
                     var post = ReadPost(Path.Combine(path, fname), schemas);
-                    post.Date = DateTimeOffset.Parse(time);   // just kinda sneak this in
+                    post.Date = DateTime.Parse(time);   // just kinda sneak this in
                     Posts.Add(post);
                 }
             }
