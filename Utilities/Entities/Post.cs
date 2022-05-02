@@ -14,7 +14,7 @@ namespace QCUtilities.Entities
         public string Author { get; set; }
 
         [XmlElement("date")]
-        public DateTimeOffset Date { get; set; }
+        public DateTime Date { get; set; }
 
         [XmlElement("link")]
         public string Link { get; set; }
