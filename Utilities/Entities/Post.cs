@@ -18,8 +18,21 @@ namespace QCVault.Utilities.Entities
         [XmlElement("link")]
         public string Link { get; set; }
 
+        private string title;
+
         [XmlElement("title")]
-        public string Title { get; set; }
+        public string Title
+        {
+            get
+            {
+                return title;
+            }
+
+            set
+            {
+                title = value.Trim();
+            }
+        }
 
         [XmlArray("redirect")]
         [XmlArrayItem("li")]
