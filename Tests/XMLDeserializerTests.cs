@@ -1,13 +1,10 @@
-using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Xml;
 using NSubstitute;
 using NUnit.Framework;
-using QCUtilities;
-using QCUtilities.Entities;
-using QCUtilities.Interfaces;
+using QCVault.Utilities.Entities;
+using QCVault.Utilities.Interfaces;
+using QCVault.Utilities.Services;
 
 namespace QCVault.Tests
 {

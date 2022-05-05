@@ -4,8 +4,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Net.Http.Headers;
-using QCUtilities;
-using QCUtilities.Interfaces;
+using QCVault.Utilities.Interfaces;
+using QCVault.Utilities.Services;
 using System;
 using System.IO;
 

@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using QCUtilities.Entities;
+using QCVault.Utilities.Entities;
 
-namespace QCUtilities.Interfaces
+namespace QCVault.Utilities.Interfaces
 {
     public interface IDiskArchiveValidator
     {

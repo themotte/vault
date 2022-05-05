@@ -1,12 +1,7 @@
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc.Testing;
-using Microsoft.AspNetCore.TestHost;
 using NUnit.Framework;
-using QCUtilities;
+using QCVault.Utilities.Entities;
 
 namespace QCVault.Tests
 {
@@ -25,7 +20,7 @@ namespace QCVault.Tests
             Assert.IsTrue(body.Contains("<blockquote>nested context test</blockquote>"));
         }
 
-        private QCUtilities.Entities.Post ReadTestPost(string filename)
+        private Post ReadTestPost(string filename)
         {
             var schemas = new System.Xml.Schema.XmlSchemaSet();
             using (var input = new StreamReader("Posts/posts.xsd"))
@@ -39,7 +34,7 @@ namespace QCVault.Tests
             var readPost = deserializer.GetType().GetMethod("ReadPost", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
 
             // I don't like the filename, this should be better. Couldn't find a good solution though. FIXME.
-            return readPost.Invoke(deserializer, new object[] { "../../../" + filename, schemas }) as QCUtilities.Entities.Post;
+            return readPost.Invoke(deserializer, new object[] { "../../../" + filename, schemas }) as Post;
         }
 
         [Test]

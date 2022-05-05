@@ -1,11 +1,9 @@
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Hosting;
+using QCVault.Utilities.Services;
+
 
 namespace QCVault
 {
@@ -20,7 +18,7 @@ namespace QCVault
                 // All we really want to do here is load all the posts, then exit
                 string xmlPath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Posts", "posts");
                 string xsd = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Posts", "posts.xsd");
-                new QCUtilities.PostDeserializer(new QCUtilities.DiskArchiveValidator(), new QCUtilities.CollectionValidator(), xmlPath, xsd);
+                new PostDeserializer(new DiskArchiveValidator(), new CollectionValidator(), xmlPath, xsd);
 
                 Console.WriteLine("Testing complete!");
 

@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
-using QCUtilities.Interfaces;
-using QCVault.Utilities.Entities;
+using QCVault.Utilities.Interfaces;
 using QCVault.Utilities.Services;
 
 namespace QCVault.Pages

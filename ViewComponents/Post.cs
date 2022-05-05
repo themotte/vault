@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using QCVault.Utilities.Entities;
 
 namespace QCVault.Components
 {
@@ -8,7 +9,7 @@ namespace QCVault.Components
         {
         }
 
-        public IViewComponentResult Invoke(QCUtilities.Entities.Post post)
+        public IViewComponentResult Invoke(Post post)
         {
             return View("Default", post);
         }
