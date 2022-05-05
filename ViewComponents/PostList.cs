@@ -9,7 +9,7 @@ namespace QCVault.Components
         {
         }
 
-        public IViewComponentResult Invoke(IEnumerable<QCUtilities.Entities.Post> postList)
+        public IViewComponentResult Invoke(IEnumerable<QCVault.Utilities.Entities.Post> postList)
         {
             return View("Default", postList);
         }

@@ -1,11 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Xml.Serialization;
 
 
-namespace QCUtilities.Entities
+namespace QCVault.Utilities.Entities
 {
     [Serializable]
     public class Post

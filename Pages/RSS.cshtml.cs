@@ -7,7 +7,7 @@ using System.Xml;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
-using QCUtilities.Interfaces;
+using QCVault.Utilities.Interfaces;
 
 namespace QCVault.Pages
 {

@@ -4,9 +4,9 @@ using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
-using QCUtilities.Entities;
-using QCUtilities.Interfaces;
-using QCUtilities;
+using QCVault.Utilities;
+using QCVault.Utilities.Entities;
+using QCVault.Utilities.Interfaces;
 
 namespace QCVault.Pages.Category
 {
@@ -42,7 +42,7 @@ namespace QCVault.Pages.Category
 
             CategoryName = categoryName.Capitalize();
 
-            if (!Utilities.Constants.Categories.TryGetValue(categoryName, out CategoryText))
+            if (!Constants.Categories.TryGetValue(categoryName, out CategoryText))
             {
                 CategoryText = "";
             }
