@@ -429,6 +429,22 @@ main > .category-title {
   margin: 0 0.5rem 0 0.5rem;
 }
 
+/* spoiler code from https://stackoverflow.com/questions/34259171/how-can-i-implement-a-spoiler-quote-with-just-css */
+.spoiler, .spoiler > * {
+  transition: color 0.1s, opacity 0.1s, background-color 0.1s;
+}
+.spoiler:not(:hover) {
+  background-color: #000;
+  color: transparent;
+}
+.spoiler:not(:hover) > * {
+  opacity: 0;
+}
+/* fix weird transitions on Chrome: */
+blockquote, blockquote > *:not(a) {
+  color: black;
+}
+
 /* Sharing buttons
 -------------------------------------------- */
 
