@@ -44,7 +44,15 @@ namespace QCVault.Utilities.Services
                 using (XmlReader reader = XmlReader.Create(input, settings))
                 {
                     XmlSerializer ser = new XmlSerializer(typeof(Post));
-                    return (Post)ser.Deserialize(reader);
+                    var post = (Post)ser.Deserialize(reader);
+
+                    // Verify it has the right number of categories
+                    if (post.Category.Count < 1 || post.Category.Count > 3)
+                    {
+                        throw new InvalidDataException("Wrong number of categories");
+                    }
+
+                    return post;
                 }
             }
         }
