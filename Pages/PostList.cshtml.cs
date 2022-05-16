@@ -1,7 +1,4 @@
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
@@ -17,7 +14,7 @@ namespace QCVault.Pages
         private readonly ILogger<PageModel> logger;
         private readonly IPostLoader postLoader;
 
-        public IEnumerable<Post> Posts { get; set; }
+        public PaginatedList<Post> Posts { get; set; }
 
         public PostListModel(ILogger<PageModel> logger, IPostLoader postLoader)
         {
@@ -27,7 +24,7 @@ namespace QCVault.Pages
 
         public IActionResult OnGet(int? pageNumber)
         {
-            Posts = postLoader.VisiblePosts();
+            Posts = PaginatedList<Post>.Create(postLoader.VisiblePosts().AsQueryable(), pageNumber ?? 1, 5);
             return Page();
         }
     }

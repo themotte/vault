@@ -1,0 +1,21 @@
+@using QCVault.Utilities.Entities;
+@model PaginatedList<Post>
+
+@{
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+}
+
+
+<div class="d-flex justify-content-center">
+    <a asp-page="/PostList"
+       asp-route-pageNumber="@(Model.PageIndex - 1)"
+       class="btn btn-primary align-content-center @prevDisabled">
+        Previous
+    </a>
+    <a asp-page="/PostList"
+       asp-route-pageNumber="@(Model.PageIndex + 1)"
+       class="btn btn-primary align-content-center @nextDisabled">
+        Next
+    </a>
+</div>
